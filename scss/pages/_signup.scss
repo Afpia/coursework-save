@@ -174,7 +174,7 @@
   }
   &-mail {
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 18px;
   }
 
@@ -205,28 +205,6 @@
     margin-top: 30px;
     width: 224px;
     height: 62px;
-
-    &::-webkit-calendar-picker-indicator {
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-    &::-webkit-datetime-edit {
-      font-family: $font-main;
-      // color: rgba(255, 255, 255, 0.35);
-    }
-    &::-webkit-datetime-edit-month-field {
-      background-color: transparent;
-    }
-    &::-webkit-datetime-edit-day-field {
-    }
-    &::-webkit-inner-spin-button {
-      display: none;
-    }
-    &::-webkit-datetime-edit-year-field {
-      // background-color: transparent;
-    }
   }
   &-calendar {
     position: absolute;
@@ -285,6 +263,31 @@
     border: 1px solid #ff6476;
     color: $white;
   }
+}
+
+.signup__input {
+  margin-top: 30px;
+}
+.signup__form-label {
+  position: relative;
+}
+.signup__eye {
+  position: absolute;
+  top: 48px;
+}
+.signup__cross {
+  position: absolute;
+  top: 50px;
+}
+.signup__lock {
+  position: absolute;
+  top: 48px;
+}
+.signup__form-input:focus ~ .login__eyeClose-button svg path {
+  fill-opacity: 1;
+}
+.signup__form-input:focus + .login__form-lock path {
+  fill-opacity: 1;
 }
 
 .signup__error-label {

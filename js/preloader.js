@@ -26,5 +26,10 @@ export default function preloaderJS() {
     fadeDOM.forEach(item => {
       item.style.overflow = '';
     });
+  } else {
+    preloader.classList.add('preloader--hide');
+    fadeDOM.forEach(item => {
+      item.style.overflow = '';
+    });
   }
 }

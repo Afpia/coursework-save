@@ -776,12 +776,10 @@ select {
 .validation__tick {
   width: 16px;
   height: 16px;
-  transition: all 0.5s ease;
 }
 .validation__cross {
   width: 14px;
   height: 14px;
-  transition: all 0.5s ease;
 }
 .validation__item {
   display: flex;
@@ -964,7 +962,7 @@ select {
 }
 .signup__form-mail {
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 18px;
 }
 .signup__form-input_name {
@@ -991,21 +989,6 @@ select {
   margin-top: 30px;
   width: 224px;
   height: 62px;
-}
-.signup__form-input_calendar::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.signup__form-input_calendar::-webkit-datetime-edit {
-  font-family: "Poppins", sans-serif;
-}
-.signup__form-input_calendar::-webkit-datetime-edit-month-field {
-  background-color: transparent;
-}
-.signup__form-input_calendar::-webkit-inner-spin-button {
-  display: none;
 }
 .signup__form-calendar {
   position: absolute;
@@ -1080,6 +1063,37 @@ select {
 .signup__error:focus {
   border: 1px solid #ff6476;
   color: #fff;
+}
+
+.signup__input {
+  margin-top: 30px;
+}
+
+.signup__form-label {
+  position: relative;
+}
+
+.signup__eye {
+  position: absolute;
+  top: 48px;
+}
+
+.signup__cross {
+  position: absolute;
+  top: 50px;
+}
+
+.signup__lock {
+  position: absolute;
+  top: 48px;
+}
+
+.signup__form-input:focus ~ .login__eyeClose-button svg path {
+  fill-opacity: 1;
+}
+
+.signup__form-input:focus + .login__form-lock path {
+  fill-opacity: 1;
 }
 
 .signup__error-label {

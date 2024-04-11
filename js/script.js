@@ -1,4 +1,5 @@
 import preloaderJS from './preloader.js';
+import forgotPassword from './forgot.password.js';
 import signupValid from './signup.js';
 
 barba.init({
@@ -26,6 +27,7 @@ barba.init({
       afterEnter() {
         logoInfinity();
         birdsForgotPassword();
+        forgotPassword();
       },
     },
     {
