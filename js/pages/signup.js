@@ -1,7 +1,5 @@
 export default function signupValid() {
   const button = document.querySelector('.signup__form-submit');
-  const name = document.querySelector('.signup__form-input_name');
-  const email = document.querySelector('.signup__form-input_mail');
   const input = document.querySelectorAll('.signup__form-input');
   const calendar = document.querySelector('.signup__form-input_calendar');
   const telephone = document.querySelector('.signup__form-input_tel');
@@ -78,8 +76,6 @@ export default function signupValid() {
       phoneRegionCode: 'ru',
     });
   });
-
-  // debugger;
 
   let passwordUser = false;
 
@@ -217,7 +213,6 @@ export default function signupValid() {
   }
   crossLogin.addEventListener('click', () => {
     inputNewPass.value = '';
-    loop();
   });
 
   button.addEventListener('click', ev => {

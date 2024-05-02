@@ -1,0 +1,42 @@
+.footer {
+  position: relative;
+  &__gradient {
+    position: absolute;
+    z-index: -1;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    border-radius: 70px;
+
+    width: 100%;
+    max-width: 1500px;
+    height: 380px;
+
+    background: linear-gradient(360deg, #0e1c2d 0%, #0b0f17 74.5%);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+		margin-bottom: 115px;
+  }
+  &__policy {
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: $white;
+  }
+  &__logo {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    p {
+      font-weight: 500;
+      font-size: 20px;
+      color: $white;
+    }
+  }
+}

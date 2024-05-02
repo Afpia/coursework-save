@@ -204,6 +204,46 @@ select {
   background: linear-gradient(180deg, #0e1c2d 0%, #0b0f17 74.5%);
 }
 
+.footer {
+  position: relative;
+}
+.footer__gradient {
+  position: absolute;
+  z-index: -1;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 70px;
+  width: 100%;
+  max-width: 1500px;
+  height: 380px;
+  background: linear-gradient(360deg, #0e1c2d 0%, #0b0f17 74.5%);
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 115px;
+}
+.footer__policy {
+  font-weight: 500;
+  font-size: 20px;
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  color: #fff;
+}
+.footer__logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.footer__logo p {
+  font-weight: 500;
+  font-size: 20px;
+  color: #fff;
+}
+
 .home__inner {
   display: flex;
   padding-top: 102px;
@@ -410,6 +450,115 @@ select {
   animation: spin 1s linear infinite;
 }
 
+.about__inner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 186px;
+  margin-bottom: 186px;
+  align-items: center;
+}
+.about__title {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.about__title img {
+  padding-top: 10px;
+}
+.about__title h1 {
+  font-weight: 600;
+  font-size: 66px;
+  line-height: 106%;
+  color: #fff;
+  margin: 0;
+  max-width: 330px;
+}
+.about__swiper {
+  margin: 0;
+}
+.about__slide {
+  background: #0d1d30;
+  border-radius: 60px;
+  max-width: 880px;
+  height: 568px;
+  display: flex;
+  gap: 75px;
+  align-items: center;
+}
+.about__slide img {
+  padding: 0px 0px 0px 74px;
+}
+.about__content {
+  padding-top: 28px;
+  width: 316px;
+}
+.about__name {
+  font-weight: 600;
+  font-size: 32px;
+  color: #fff;
+  padding-bottom: 2px;
+  margin: 0;
+}
+.about__subtitle {
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 30px;
+  margin: 0;
+}
+.about__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 180%;
+  color: #fff;
+  margin: 0;
+  padding-bottom: 86px;
+}
+.about__btn {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0B0F17;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: none;
+  background-color: #84d7e9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 54px;
+  padding: 0px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .about__btn:hover {
+    background-color: #dbf3f8;
+  }
+}
+.about__swiper-wrapper {
+  max-width: 880px;
+}
+
+.swiper-pagination {
+  position: relative;
+  bottom: 0 !important;
+  margin-top: 24px;
+}
+
+.swiper-pagination-bullet {
+  width: 19px;
+  height: 19px;
+  background: rgba(132, 215, 233, 0.4);
+  border-radius: 100%;
+  margin-right: 20px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+
 .login__background {
   background: url("../../assets/login/back.jpg") 0 0/cover no-repeat;
   width: 100%;
@@ -427,7 +576,7 @@ select {
   justify-content: center;
 }
 
-.block-login {
+.block {
   display: flex;
   flex-direction: column;
   padding: 35px;
@@ -678,11 +827,11 @@ select {
 }
 
 .error {
-  border: 1px solid #ff6476;
+  border: 1px solid #ff6476 !important;
 }
 .error:focus {
-  border: 1px solid #ff6476;
-  color: #fff;
+  border: 1px solid #ff6476 !important;
+  color: #fff !important;
 }
 
 .error-label {
@@ -757,7 +906,121 @@ select {
   justify-content: center;
 }
 .new-pass__input {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  height: 62px;
+  background: #0B0F17;
+  outline: none;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 400;
   margin-top: 35px;
+  transition: all 0.2s ease;
+  padding: 16px 56px;
+}
+.new-pass__input ::-moz-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.25);
+}
+.new-pass__input ::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.25);
+}
+.new-pass__input:focus {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.new-pass__form-label {
+  position: relative;
+}
+.new-pass__form-lock {
+  position: absolute;
+  top: -2px;
+  left: 18px;
+}
+.new-pass__form-submit {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0B0F17;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: none;
+  background-color: #84d7e9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 62px;
+  margin-top: 30px;
+  padding: 0;
+  border-radius: 20px;
+  font-size: 28px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .new-pass__form-submit:hover {
+    background-color: #dbf3f8;
+  }
+}
+.new-pass__form-submit:focus-visible {
+  outline: #fff;
+  border: 1px solid #fff;
+}
+@media (hover: none) and (pointer: coarse) {
+  .new-pass__form-submit:focus-visible {
+    outline: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .new-pass__form-submit:hover {
+    background: #b8f2ff;
+  }
+}
+
+.new-pass__eye-hidden {
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.new-pass__eye {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.new-pass__eyeClose {
+  cursor: pointer;
+}
+
+.new-pass__eyeClose-button {
+  position: absolute;
+  top: 0px;
+  right: 18px;
+}
+
+.new-pass__cross {
+  position: absolute;
+  right: 62px;
+  top: 2px;
+  cursor: pointer;
+}
+
+.new-pass__input:focus ~ .new-pass__eyeClose-button svg path {
+  fill-opacity: 1;
+}
+
+.new-pass__input:focus + .new-pass__form-lock path {
+  fill-opacity: 1;
 }
 
 .validation__hidden {

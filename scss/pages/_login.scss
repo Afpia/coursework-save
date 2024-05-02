@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-.block-login {
+.block {
   display: flex;
   flex-direction: column;
 
@@ -244,15 +244,15 @@
 }
 
 .error {
-  border: 1px solid #ff6476;
+  border: 1px solid $pink !important;
 
   &:focus {
-    border: 1px solid #ff6476;
-    color: $white;
+    border: 1px solid $pink !important;
+    color: $white !important;
   }
 }
 .error-label {
-  color: #ff6476;
+  color: $pink;
   font-weight: 600;
   font-size: 16px;
   position: absolute;
