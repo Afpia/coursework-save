@@ -14,10 +14,12 @@
     gap: 52px;
   }
   &__nav-link {
-    color: rgba($color: #ffffff, $alpha: 0.8);
+    color: $color-main;
+    transition: all 0.2s ease;
     @media #{$mouse-device} {
       &:hover {
-        color: $white;
+        transform: translateX(4px);
+        color: $color-main;
       }
     }
   }
@@ -37,11 +39,11 @@
       display: flex;
       align-items: start;
       gap: 14px;
-      color: rgba($color: #ffffff, $alpha: 0.8);
+      color: $color-main;
       transition: all 0.2s ease;
       @media #{$mouse-device} {
         &:hover {
-          color: $white;
+          color: $color-main;
         }
       }
     }
@@ -50,10 +52,34 @@
     width: 24px;
     height: 23px;
   }
-}
 
-.active {
-  color: $white;
+  &__sun {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    fill: #fff;
+    opacity: 1;
+  }
+
+  &__moon {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    fill: #0B0F17;
+    opacity: 0;
+  }
+}
+body.dark .header__sun {
+  opacity: 0;
+}
+body.dark .header__moon {
+  opacity: 1;
 }
 
 .header__gradient {
@@ -69,5 +95,32 @@
   max-width: 1500px;
   height: 380px;
 
-  background: linear-gradient(180deg, #0e1c2d 0%, #0b0f17 74.5%);
+  background: linear-gradient(180deg, $background-gradient 0%, $background 74.5%);
+  transition: all 0.2s ease;
+}
+
+.header__toggle {
+  height: 30px;
+  width: 60px;
+  background: $background;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.header__switch {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-radius: 50%;
+  background: $background-second;
+  transition: all 0.2s ease;
+}
+
+body.dark .header__switch {
+  left: 36px;
 }

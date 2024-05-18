@@ -1,6 +1,50 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --background: #0b0f17;
+  --background-second: #1f283d;
+  --background-third: #fff;
+  --background-reverse: #84d7e9;
+  --color-main: #fff;
+  --color-second: #0b0f17;
+  --color-reverse: #1f283d;
+  --background-gradient: #0e1c2d;
+  --blue: #84d7e9;
+  --dark: #0b0f17;
+  --light-dark: #1f283d;
+  --white: #fff;
+  --black: #000;
+  --pink: #ff6476;
+  --green: rgb(123 214 130);
+  --opacity: rgba(255, 255, 255, 25%);
+}
+
+body.dark {
+  --background: #84d7e9;
+  --background-second: #00d2ff;
+  --background-third: #ff6476;
+  --background-gradient: #d0f7ff;
+  --background-reverse: #0b0f17;
+  --color-main: #1f283d;
+  --color-second: #84d7e9;
+  --color-reverse: #fff;
+  --opacity: rgba(31, 40, 61, 0.25);
+}
+body.dark .home__benefits-arrow {
+  background: linear-gradient(180deg, rgba(132, 215, 233, 0.1) 0%, rgba(11, 15, 23, 0.17) 100%);
+  transition: all 0.2s ease;
+}
+body.dark .about__subtitle {
+  color: rgba(31, 40, 61, 0.4);
+}
+body.dark .swiper-pagination-bullet {
+  background: rgba(31, 40, 61, 0.4);
+}
+body.dark .home__img {
+  box-shadow: 0 0 50px 2px rgba(11, 15, 23, 0.2);
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -18,19 +62,20 @@
   }
 }
 body {
-  color: #000;
-  background-color: #0B0F17;
+  color: var(--color-main);
+  background-color: var(--background);
   font-size: 1.125rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   margin: 0;
   position: relative;
   scroll-behavior: smooth;
+  transition: all 0.2s ease;
 }
 
 a {
   color: inherit;
-  transition: color 0.2s ease-in;
+  transition: color 0.2s ease;
 }
 
 .wrapper {
@@ -134,11 +179,13 @@ select {
   gap: 52px;
 }
 .header__nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-main);
+  transition: all 0.2s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .header__nav-link:hover {
-    color: #fff;
+    transform: translateX(4px);
+    color: var(--color-main);
   }
 }
 .header__call {
@@ -147,13 +194,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   width: 206px;
@@ -162,7 +209,10 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
   .header__call:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .header__call:hover {
+    background-color: var(--pink);
   }
 }
 .header__right {
@@ -174,21 +224,45 @@ select {
   display: flex;
   align-items: start;
   gap: 14px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-main);
   transition: all 0.2s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .header__right .header__login:hover {
-    color: #fff;
+    color: var(--color-main);
   }
 }
 .header__key {
   width: 24px;
   height: 23px;
 }
+.header__sun {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  fill: #fff;
+  opacity: 1;
+}
+.header__moon {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  fill: #0B0F17;
+  opacity: 0;
+}
 
-.active {
-  color: #fff;
+body.dark .header__sun {
+  opacity: 0;
+}
+
+body.dark .header__moon {
+  opacity: 1;
 }
 
 .header__gradient {
@@ -201,7 +275,35 @@ select {
   width: 100%;
   max-width: 1500px;
   height: 380px;
-  background: linear-gradient(180deg, #0e1c2d 0%, #0b0f17 74.5%);
+  background: linear-gradient(180deg, var(--background-gradient) 0%, var(--background) 74.5%);
+  transition: all 0.2s ease;
+}
+
+.header__toggle {
+  height: 30px;
+  width: 60px;
+  background: var(--background);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.header__switch {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--background-second);
+  transition: all 0.2s ease;
+}
+
+body.dark .header__switch {
+  left: 36px;
 }
 
 .footer {
@@ -217,7 +319,7 @@ select {
   width: 100%;
   max-width: 1500px;
   height: 380px;
-  background: linear-gradient(360deg, #0e1c2d 0%, #0b0f17 74.5%);
+  background: linear-gradient(360deg, var(--background-gradient) 0%, var(--background) 74.5%);
 }
 .footer__inner {
   display: flex;
@@ -231,7 +333,7 @@ select {
   text-decoration: underline;
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
-  color: #fff;
+  color: var(--color-main);
 }
 .footer__logo {
   display: flex;
@@ -241,7 +343,7 @@ select {
 .footer__logo p {
   font-weight: 500;
   font-size: 20px;
-  color: #fff;
+  color: var(--color-main);
 }
 
 .home__inner {
@@ -253,6 +355,8 @@ select {
   box-shadow: 0 0 50px 2px rgba(132, 215, 233, 0.2);
   border-radius: 200px;
   width: 100%;
+  min-height: 560px;
+  max-height: calc(100vh - 278px);
   height: 100%;
   min-width: 274px;
 }
@@ -260,18 +364,31 @@ select {
   font-family: "Urbanist", sans-serif;
   font-size: 144px;
   font-weight: 600;
-  color: #fff;
   line-height: 133%;
   max-width: 704px;
+  transition: all 0.2s ease;
   letter-spacing: -0.05em;
   margin: 0;
   width: 100%;
 }
 .home__benefits {
-  color: #fff;
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  min-height: 560px;
+  max-height: calc(100vh - 278px);
+}
+.home__benefits-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 60px;
+  height: 100%;
+  max-height: 7rem;
+  background: linear-gradient(180deg, rgba(11, 15, 23, 0.1) 0%, rgba(132, 215, 233, 0.17) 100%);
+  transition: all 0.2s ease;
 }
 .home__benefits-1 {
   padding-top: 42px;
@@ -308,7 +425,6 @@ select {
   position: absolute;
   left: 25px;
   bottom: 25px;
-  color: #fff;
   font-weight: 600;
   font-size: 24px;
   border-radius: 50px;
@@ -316,14 +432,14 @@ select {
   width: 100%;
   height: 82px;
   border: none;
-  background-color: #0B0F17;
+  background-color: var(--background);
   cursor: pointer;
   transition: all 0.4s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .choice__button:hover {
-    background-color: #dbf3f8;
-    color: #0B0F17;
+    background-color: var(--background-reverse);
+    color: var(--color-second);
   }
 }
 .choice__row {
@@ -361,7 +477,7 @@ select {
   border-radius: 100px;
 }
 .choice__item-3 {
-  background-color: #1F283D;
+  background-color: var(--background-second);
   border-radius: 50px;
   padding: 45px 40px;
   display: flex;
@@ -373,14 +489,12 @@ select {
   font-weight: 700;
   font-size: 46px;
   letter-spacing: -0.05em;
-  color: #fff;
   margin: 0;
 }
 .choice__item-3 p {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  color: #fff;
   margin: 0;
   padding-top: 20px;
 }
@@ -390,26 +504,37 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #0B0F17;
+  color: var(--color-second);
   font-size: 20px;
   font-weight: 600;
   height: 66px;
-  background-color: #ff6476;
+  background-color: var(--pink);
   border-radius: 50px;
   transition: all 0.4s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .choice__item-3 button:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .choice__item-3 button:hover {
+    background-color: var(--pink);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .choice__item-3 button:hover {
+    background-color: var(--background-reverse);
+  }
+  body.dark .choice__item-3 button:hover {
+    background-color: var(--background-reverse);
   }
 }
 
@@ -432,7 +557,7 @@ select {
 }
 
 .preloader__loader {
-  background-color: #fff;
+  background-color: var(--white);
   position: absolute;
   top: 0;
   left: 0;
@@ -469,7 +594,6 @@ select {
   font-weight: 600;
   font-size: 66px;
   line-height: 106%;
-  color: #fff;
   margin: 0;
   max-width: 330px;
 }
@@ -477,7 +601,7 @@ select {
   margin: 0;
 }
 .about__slide {
-  background: #0d1d30;
+  background: var(--background-second);
   border-radius: 60px;
   max-width: 880px;
   height: 568px;
@@ -495,14 +619,13 @@ select {
 .about__name {
   font-weight: 600;
   font-size: 32px;
-  color: #fff;
   padding-bottom: 2px;
   margin: 0;
 }
 .about__subtitle {
   font-weight: 600;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   padding-bottom: 30px;
   margin: 0;
 }
@@ -510,7 +633,6 @@ select {
   font-weight: 500;
   font-size: 14px;
   line-height: 180%;
-  color: #fff;
   margin: 0;
   padding-bottom: 86px;
 }
@@ -520,13 +642,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   height: 54px;
@@ -534,7 +656,10 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
   .about__btn:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .about__btn:hover {
+    background-color: var(--pink);
   }
 }
 .about__swiper-wrapper {
@@ -556,7 +681,7 @@ select {
 }
 
 .swiper-pagination-bullet-active {
-  background: #fff;
+  background: var(--color-main) !important;
 }
 
 .login__background {
@@ -582,9 +707,9 @@ select {
   padding: 35px;
   width: calc(100% - 20px);
   max-width: 570px;
-  background-color: #1F283D;
-  box-shadow: 4px 4px 4px 0 rgba(255, 255, 255, 0.25);
-  outline: 1px solid #394153;
+  background-color: var(--background-second);
+  box-shadow: 4px 4px 4px 0 var(--opacity);
+  outline: 1px solid var(--background);
   border-radius: 30px;
 }
 
@@ -593,7 +718,7 @@ select {
 }
 .login__title {
   text-align: center;
-  color: #fff;
+  color: var(--color-main);
   font-weight: 600;
   font-size: 30px;
   font-family: "Urbanist", sans-serif;
@@ -602,7 +727,7 @@ select {
 }
 .login__signup {
   text-align: center;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 600;
   font-size: 14px;
   font-family: "Poppins", sans-serif;
@@ -610,19 +735,19 @@ select {
   margin: 0;
 }
 .login__signup span {
-  color: #fff;
+  color: var(--color-main);
 }
 
 .login__form-input {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--opacity);
   border-radius: 10px;
   width: 100%;
   max-width: 500px;
   height: 62px;
-  background: #0B0F17;
+  background: var(--color-second);
   outline: none;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 400;
   margin-top: 22px;
   transition: all 0.2s ease;
@@ -631,17 +756,17 @@ select {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .login__form-input ::placeholder {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .login__form-input:focus {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--color-main);
+  color: var(--color-main);
 }
 .login__form-input_mail {
   padding: 16px 56px;
@@ -669,7 +794,7 @@ select {
   margin: 0;
   font-weight: 600;
   font-size: 16px;
-  color: #fff;
+  color: var(--color-main);
   padding-top: 15px;
 }
 .login__form-submit {
@@ -678,13 +803,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   height: 62px;
@@ -695,21 +820,19 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
   .login__form-submit:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .login__form-submit:hover {
+    background-color: var(--pink);
   }
 }
 .login__form-submit:focus-visible {
-  outline: #fff;
-  border: 1px solid #fff;
+  outline: var(--color-main);
+  border: 1px solid var(--color-main);
 }
 @media (hover: none) and (pointer: coarse) {
   .login__form-submit:focus-visible {
     outline: none;
-  }
-}
-@media (hover: hover) and (pointer: fine) {
-  .login__form-submit:hover {
-    background: #b8f2ff;
   }
 }
 
@@ -722,13 +845,15 @@ select {
 .login__or hr {
   width: 100%;
   height: 1px;
-  background: #fff;
+  color: var(--color-main);
+  border: none;
+  background-color: var(--color-main);
   margin: 0;
 }
 .login__or p {
   margin: 0;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--color-main);
   font-size: 20px;
   font-weight: 400;
   font-family: "Poppins", sans-serif;
@@ -748,13 +873,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   gap: 7px;
@@ -764,22 +889,25 @@ select {
   height: 62px;
   margin-top: 27px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--opacity);
   background: rgba(255, 255, 255, 0.1);
 }
 @media (hover: hover) and (pointer: fine) {
   .login__button-gosuslugi:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .login__button-gosuslugi:hover {
+    background-color: var(--pink);
   }
 }
 @media (hover: hover) and (pointer: fine) {
   .login__button-gosuslugi:hover {
-    background-color: #0B0F17;
+    background-color: var(--dark);
   }
 }
 .login__button-gosuslugi:focus-visible {
-  outline: #fff;
-  border: 1px solid #fff;
+  outline: var(--color-main);
+  border: 1px solid var(--color-main);
 }
 @media (hover: none) and (pointer: coarse) {
   .login__button-gosuslugi:focus-visible {
@@ -789,7 +917,7 @@ select {
 .login__button-gosuslugi p {
   font-size: 20px;
   margin: 0;
-  color: #fff;
+  color: var(--white);
 }
 
 .login__eye-hidden {
@@ -827,15 +955,15 @@ select {
 }
 
 .error {
-  border: 1px solid #ff6476 !important;
+  border: 1px solid var(--pink) !important;
 }
 .error:focus {
-  border: 1px solid #ff6476 !important;
-  color: #fff !important;
+  border: 1px solid var(--pink) !important;
+  color: var(--color-main) !important;
 }
 
 .error-label {
-  color: #ff6476;
+  color: var(--pink);
   font-weight: 600;
   font-size: 16px;
   position: absolute;
@@ -864,7 +992,7 @@ select {
 }
 .password__title {
   text-align: center;
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   font-size: 30px;
   font-family: "Urbanist", sans-serif;
@@ -873,7 +1001,7 @@ select {
 }
 .password__text {
   text-align: center;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 600;
   font-size: 14px;
   font-family: "Poppins", sans-serif;
@@ -886,7 +1014,7 @@ select {
   padding-top: 16px;
   font-weight: 600;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 
 .new-pass__background {
@@ -906,15 +1034,15 @@ select {
   justify-content: center;
 }
 .new-pass__input {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--opacity);
   border-radius: 10px;
   width: 100%;
   max-width: 500px;
   height: 62px;
-  background: #0B0F17;
+  background: var(--dark);
   outline: none;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 400;
   margin-top: 35px;
   transition: all 0.2s ease;
@@ -924,17 +1052,17 @@ select {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .new-pass__input ::placeholder {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .new-pass__input:focus {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--white);
+  color: var(--white);
 }
 .new-pass__form-label {
   position: relative;
@@ -950,13 +1078,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   height: 62px;
@@ -967,12 +1095,15 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
   .new-pass__form-submit:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .new-pass__form-submit:hover {
+    background-color: var(--pink);
   }
 }
 .new-pass__form-submit:focus-visible {
-  outline: #fff;
-  border: 1px solid #fff;
+  outline: var(--white);
+  border: 1px solid var(--white);
 }
 @media (hover: none) and (pointer: coarse) {
   .new-pass__form-submit:focus-visible {
@@ -1052,7 +1183,7 @@ select {
 .validation__text {
   margin: 0;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 600;
 }
 
@@ -1070,7 +1201,7 @@ select {
 .signup__content {
   max-width: 570px;
   width: 100%;
-  background-color: #1F283D;
+  background-color: var(--light-dark);
   border: 1px solid #394153;
   z-index: 1;
   position: relative;
@@ -1081,7 +1212,7 @@ select {
 }
 .signup__title {
   margin: 0;
-  color: #ff6476;
+  color: var(--pink);
   font-size: 40px;
   font-family: "Urbanist", sans-serif;
   font-weight: 700;
@@ -1093,7 +1224,7 @@ select {
   font-family: "Urbanist", sans-serif;
   font-weight: 600;
   font-size: 40px;
-  color: #fff;
+  color: var(--white);
   margin: 0;
   padding-top: 22px;
 }
@@ -1103,17 +1234,17 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   gap: 7px;
-  color: #fff;
+  color: var(--white);
   font-size: 20px;
   font-weight: 600;
   margin: 0 auto;
@@ -1121,22 +1252,25 @@ select {
   height: 62px;
   margin-top: 20px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--opacity);
   background: rgba(255, 255, 255, 0.1);
 }
 @media (hover: hover) and (pointer: fine) {
   .signup__button-gosuslugi:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .signup__button-gosuslugi:hover {
+    background-color: var(--pink);
   }
 }
 @media (hover: hover) and (pointer: fine) {
   .signup__button-gosuslugi:hover {
-    background-color: #0B0F17;
+    background-color: var(--dark);
   }
 }
 .signup__button-gosuslugi:focus-visible {
-  outline: #fff;
-  border: 1px solid #fff;
+  outline: var(--white);
+  border: 1px solid var(--white);
 }
 @media (hover: none) and (pointer: coarse) {
   .signup__button-gosuslugi:focus-visible {
@@ -1146,7 +1280,7 @@ select {
 .signup__button-gosuslugi p {
   font-size: 20px;
   margin: 0;
-  color: #fff;
+  color: var(--white);
 }
 .signup__row {
   display: flex;
@@ -1161,19 +1295,19 @@ select {
 .signup__or hr {
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: var(--white);
   margin: 0;
 }
 .signup__or p {
   margin: 0;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--white);
   font-size: 20px;
   font-weight: 400;
   font-family: "Poppins", sans-serif;
 }
 .signup__toLogin {
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -1183,19 +1317,19 @@ select {
   margin: 0;
 }
 .signup__toLogin a {
-  color: #fff;
+  color: var(--white);
 }
 
 .signup__form-input {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--opacity);
   border-radius: 10px;
   width: 100%;
   max-width: 500px;
   height: 62px;
-  background: #0B0F17;
+  background: var(--dark);
   outline: none;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
   font-weight: 400;
   margin-top: 22px;
   transition: all 0.2s ease;
@@ -1204,17 +1338,17 @@ select {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .signup__form-input ::placeholder {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--opacity);
 }
 .signup__form-input:focus {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--white);
+  color: var(--white);
 }
 .signup__form-label {
   position: relative;
@@ -1285,13 +1419,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0B0F17;
+  color: var(--color-second);
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-radius: 30px;
   border: none;
-  background-color: #84d7e9;
+  background-color: var(--background-reverse);
   cursor: pointer;
   transition: all 0.2s ease;
   height: 62px;
@@ -1302,12 +1436,15 @@ select {
 }
 @media (hover: hover) and (pointer: fine) {
   .signup__form-submit:hover {
-    background-color: #dbf3f8;
+    background-color: var(--pink);
+  }
+  body.dark .signup__form-submit:hover {
+    background-color: var(--pink);
   }
 }
 .signup__form-submit:focus-visible {
-  outline: #fff;
-  border: 1px solid #fff;
+  outline: var(--white);
+  border: 1px solid var(--white);
 }
 @media (hover: none) and (pointer: coarse) {
   .signup__form-submit:focus-visible {
@@ -1325,7 +1462,7 @@ select {
 }
 .signup__error:focus {
   border: 1px solid #ff6476;
-  color: #fff;
+  color: var(--white);
 }
 
 .signup__input {

@@ -40,10 +40,11 @@ barba.init({
         preloaderJS();
       },
       afterEnter() {
+        toggle();
         preloaderJS();
         logoInfinity();
         offClick();
-				swiper();
+        swiper();
       },
     },
     {
@@ -118,5 +119,14 @@ function swiper() {
       el: '.swiper-pagination',
       clickable: true,
     },
+  });
+}
+
+function toggle() {
+  const body = document.querySelector('body');
+  const toggle = document.querySelector('.header__toggle');
+
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
   });
 }

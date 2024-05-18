@@ -2,18 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-  color: $black;
-  background-color: $dark;
+  color: $color-main;
+  background-color: $background;
   font-size: 1.125rem;
   font-family: $font-main;
   font-weight: 500;
   margin: 0;
   position: relative;
   scroll-behavior: smooth;
+	transition: all 0.2s ease;
 }
 a {
   color: inherit;
-  transition: color 0.2s ease-in;
+  transition: color 0.2s ease;
 }
 
 .wrapper {

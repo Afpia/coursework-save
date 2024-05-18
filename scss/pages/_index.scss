@@ -8,6 +8,8 @@
     box-shadow: 0 0 50px 2px rgba(132, 215, 233, 0.2);
     border-radius: 200px;
     width: 100%;
+    min-height: 560px;
+    max-height: calc(100vh - 278px);
     height: 100%;
     min-width: 274px;
   }
@@ -16,9 +18,9 @@
     font-family: $font-second;
     font-size: 144px;
     font-weight: 600;
-    color: $white;
     line-height: 133%;
     max-width: 704px;
+    transition: all 0.2s ease;
 
     letter-spacing: -0.05em;
     margin: 0;
@@ -26,10 +28,24 @@
   }
 
   &__benefits {
-    color: $white;
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    min-height: 560px;
+    max-height: calc(100vh - 278px);
+
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      width: 60px;
+      height: 100%;
+      max-height: 7rem;
+      background: linear-gradient(180deg, rgba(11, 15, 23, 0.1) 0%, rgba(132, 215, 233, 0.17) 100%);
+      transition: all 0.2s ease;
+    }
   }
   &__benefits-1 {
     padding-top: 42px;
@@ -38,11 +54,13 @@
       padding-top: 12px;
       margin: 0;
       font-size: 16px;
+
       font-weight: 600;
     }
   }
   &__benefits-2 {
     width: 240px;
+
     p {
       padding-top: 12px;
       margin: 0;
@@ -69,7 +87,6 @@
     left: 25px;
     bottom: 25px;
 
-    color: $white;
     font-weight: 600;
     font-size: 24px;
 
@@ -80,14 +97,14 @@
     height: 82px;
 
     border: none;
-    background-color: $dark;
+    background-color: $background;
     cursor: pointer;
     transition: all 0.4s ease;
 
     @media #{$mouse-device} {
       &:hover {
-        background-color: lighten($color: $blue, $amount: 20);
-        color: $dark;
+        background-color: $background-reverse;
+        color: $color-second;
       }
     }
   }
@@ -129,7 +146,7 @@
   }
 
   &__item-3 {
-    background-color: $light-dark;
+    background-color: $background-second;
     border-radius: 50px;
     padding: 45px 40px;
     display: flex;
@@ -140,21 +157,19 @@
       font-weight: 700;
       font-size: 46px;
       letter-spacing: -0.05em;
-      color: $white;
       margin: 0;
     }
     p {
       font-family: $font-main;
       font-weight: 400;
       font-size: 16px;
-      color: $white;
       margin: 0;
 
       padding-top: 20px;
     }
     button {
       @include button;
-      color: $dark;
+      color: $color-second;
       font-size: 20px;
       font-weight: 600;
 
@@ -162,6 +177,15 @@
       background-color: $pink;
       border-radius: 50px;
       transition: all 0.4s ease;
+
+      @media #{$mouse-device} {
+        &:hover {
+          background-color: $background-reverse;
+        }
+        body.dark &:hover {
+          background-color: $background-reverse;
+        }
+      }
     }
   }
 }
@@ -222,7 +246,6 @@
       font-weight: 600;
       font-size: 66px;
       line-height: 106%;
-      color: $white;
       margin: 0;
       max-width: 330px;
     }
@@ -233,7 +256,7 @@
   }
 
   &__slide {
-    background: #0d1d30;
+    background: $background-second;
 
     border-radius: 60px;
     max-width: 880px;
@@ -242,21 +265,18 @@
     display: flex;
     gap: 75px;
     align-items: center;
-		img {
-    padding: 0px 0px 0px 74px;
-
-		}
+    img {
+      padding: 0px 0px 0px 74px;
+    }
   }
 
   &__content {
     padding-top: 28px;
-		width: 316px;
-
+    width: 316px;
   }
   &__name {
     font-weight: 600;
     font-size: 32px;
-    color: $white;
     padding-bottom: 2px;
     margin: 0;
   }
@@ -264,7 +284,7 @@
   &__subtitle {
     font-weight: 600;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     padding-bottom: 30px;
     margin: 0;
   }
@@ -273,27 +293,24 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 180%;
-    color: $white;
     margin: 0;
-		padding-bottom: 86px;
+    padding-bottom: 86px;
   }
 
-	&__btn {
-		@include button;
-		height: 54px;
-		padding: 0px;
-
-	}
+  &__btn {
+    @include button;
+    height: 54px;
+    padding: 0px;
+  }
   &__swiper-wrapper {
     max-width: 880px;
   }
 }
 
-
 .swiper-pagination {
   position: relative;
   bottom: 0 !important;
-	margin-top: 24px;
+  margin-top: 24px;
 }
 .swiper-pagination-bullet {
   width: 19px;
@@ -301,9 +318,9 @@
   background: rgba(132, 215, 233, 0.4);
   border-radius: 100%;
 
-	margin-right: 20px !important;
+  margin-right: 20px !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: $white;
+  background: $color-main !important;
 }

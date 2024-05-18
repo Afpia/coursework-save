@@ -1,15 +1,88 @@
+:root {
+  --background: #0b0f17;
+  // --background: #84d7e9;
+  --background-second: #1f283d;
+  // --background-second: #00D2FF;
+  --background-third: #fff;
+  // --background-third: #ff6476;
+
+  --background-reverse: #84d7e9;
+
+  --color-main: #fff;
+  // --color-main: #1f283d;
+  --color-second: #0b0f17;
+  // --color-second: #84D7E9;
+
+  --color-reverse: #1f283d;
+
+  --background-gradient: #0e1c2d;
+
+  --blue: #84d7e9;
+  --dark: #0b0f17;
+  --light-dark: #1f283d;
+  --white: #fff;
+  --black: #000;
+  --pink: #ff6476;
+	--green: rgb(123 214 130);
+
+  --opacity: rgba(255, 255, 255, 25%);
+}
+
 // Fonts
 $font-main: 'Poppins', sans-serif;
 $font-second: 'Urbanist', sans-serif;
 
 // Colors
-$dark: #0B0F17;
-$light-dark: #1F283D;
-$white: #fff;
-$black: #000;
-$pink: #ff6476;
-$blue: #84d7e9;
-$white-25: rgba(255, 255, 255, 25%);
+
+$background: var(--background);
+$background-second: var(--background-second);
+$background-third: var(--background-third);
+$background-gradient: var(--background-gradient);
+$background-reverse: var(--background-reverse);
+
+$color-main: var(--color-main);
+$color-second: var(--color-second);
+$color-reverse: var(--color-reverse);
+
+$dark: var(--dark);
+$light-dark: var(--light-dark);
+$white: var(--white);
+$black: var(--black);
+$pink: var(--pink);
+$blue: var(--blue);
+
+$opacity: var(--opacity);
+
+
+body.dark {
+  --background: #84d7e9;
+  --background-second: #00d2ff;
+  --background-third: #ff6476;
+  --background-gradient: #d0f7ff;
+  --background-reverse: #0b0f17;
+
+  --color-main: #1f283d;
+  --color-second: #84d7e9;
+  --color-reverse: #fff;
+
+	--opacity: rgba(31, 40, 61, 0.25);
+	
+  .home__benefits-arrow {
+    background: linear-gradient(180deg, rgba(132, 215, 233, 0.1) 0%, rgba(11, 15, 23, 0.17) 100%);
+    transition: all 0.2s ease;
+  }
+
+  .about__subtitle {
+    color: rgba(31, 40, 61, 0.4);
+  }
+  .swiper-pagination-bullet {
+    background: rgba(31, 40, 61, 0.4);
+  }
+
+  .home__img {
+    box-shadow: 0 0 50px 2px rgba(11, 15, 23, 0.2);
+  }
+}
 
 // Breakpoints
 
