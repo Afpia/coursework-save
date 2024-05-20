@@ -6,6 +6,7 @@
   --background-second: #1f283d;
   --background-third: #fff;
   --background-reverse: #84d7e9;
+  --reverse: #ff6476;
   --color-main: #fff;
   --color-second: #0b0f17;
   --color-reverse: #1f283d;
@@ -26,6 +27,7 @@ body.dark {
   --background-third: #ff6476;
   --background-gradient: #d0f7ff;
   --background-reverse: #0b0f17;
+  --reverse: #0b0f17;
   --color-main: #1f283d;
   --color-second: #84d7e9;
   --color-reverse: #fff;
@@ -1031,6 +1033,144 @@ body.dark .header__switch {
   color: var(--opacity);
 }
 
+.profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.profile__title {
+  margin: 0;
+  margin-top: 82px;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--white);
+  font-family: "Urbanist", sans-serif;
+  text-align: center;
+}
+.profile__title span {
+  font-family: "Urbanist", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--background-reverse);
+  cursor: pointer;
+}
+.profile__form {
+  display: flex;
+  gap: 40px;
+  padding-top: 55px;
+}
+.profile__info {
+  padding-bottom: 16px;
+}
+.profile__info p {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--pink);
+  padding-bottom: 10px;
+}
+.profile__input {
+  border: 1px solid var(--color-main);
+  border-radius: 10px;
+  width: 270px;
+  height: 50px;
+  background-color: transparent;
+  outline: none;
+  padding: 0px 25px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--opacity);
+}
+.profile__submit {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-second);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--background-reverse);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  height: 50px;
+  width: 200px;
+  margin: 0 auto;
+  transition: all 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .profile__submit:hover {
+    background-color: var(--pink);
+  }
+  body.dark .profile__submit:hover {
+    background-color: var(--pink);
+  }
+}
+
+.inputs-active {
+  color: var(--color-main);
+}
+
+.button-close {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.navbar {
+  width: 152px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--background-gradient) 0%, var(--color-second) 75%);
+  border-radius: 20px;
+  position: absolute;
+  top: 82px;
+  left: -50px;
+}
+.navbar__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar__column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.navbar__title {
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-main);
+  font-family: "Urbanist", sans-serif;
+}
+.navbar__link {
+  padding: 0px 0 15px 0;
+  margin: 0px 0 30px 0;
+}
+.navbar-active {
+  padding-top: 15px;
+  background: var(--background-reverse);
+  border-radius: 10px;
+  width: 152px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .navbar-active:hover {
+    background: var(--pink);
+  }
+}
+
 .new-pass__background {
   background: url("../../assets/new.password/back.jpg") 0 0/cover no-repeat;
   width: 100%;
@@ -1053,7 +1193,7 @@ body.dark .header__switch {
   width: 100%;
   max-width: 500px;
   height: 62px;
-  background: var(--dark);
+  background: var(--color-second);
   outline: none;
   font-size: 20px;
   color: var(--opacity);
@@ -1075,8 +1215,8 @@ body.dark .header__switch {
   color: var(--opacity);
 }
 .new-pass__input:focus {
-  border: 1px solid var(--white);
-  color: var(--white);
+  border: 1px solid var(--color-main);
+  color: var(--color-main);
 }
 .new-pass__form-label {
   position: relative;
@@ -1116,8 +1256,8 @@ body.dark .header__switch {
   }
 }
 .new-pass__form-submit:focus-visible {
-  outline: var(--white);
-  border: 1px solid var(--white);
+  outline: var(--color-main);
+  border: 1px solid var(--color-main);
 }
 @media (hover: none) and (pointer: coarse) {
   .new-pass__form-submit:focus-visible {

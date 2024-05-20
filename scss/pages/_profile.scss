@@ -1,0 +1,128 @@
+.profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__title {
+    margin: 0;
+    margin-top: 82px;
+
+    font-weight: 600;
+    font-size: 24px;
+    color: $white;
+    font-family: $font-second;
+    text-align: center;
+
+    span {
+      font-family: $font-second;
+      font-weight: 600;
+      font-size: 12px;
+      color: $background-reverse;
+      cursor: pointer;
+    }
+  }
+
+  &__form {
+    display: flex;
+    gap: 40px;
+    padding-top: 55px;
+  }
+
+  &__info {
+    padding-bottom: 16px;
+    p {
+      font-family: $font-main;
+      margin: 0;
+      font-weight: 600;
+      font-size: 20px;
+      color: $pink;
+      padding-bottom: 10px;
+    }
+  }
+  &__input {
+    border: 1px solid $color-main;
+    border-radius: 10px;
+    width: 270px;
+    height: 50px;
+    background-color: transparent;
+    outline: none;
+    padding: 0px 25px;
+    margin-bottom: 16px;
+
+    font-weight: 600;
+    font-size: 16px;
+    color: $opacity;
+  }
+
+  &__submit {
+    @include button;
+    text-align: center;
+		height: 50px;
+		width: 200px;
+		margin: 0 auto;
+		transition: all 0.2s ease;
+  }
+}
+.inputs-active {
+  color: $color-main;
+}
+.button-close {
+	// display: none;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.navbar {
+  width: 152px;
+  height: 100%;
+  background: linear-gradient(180deg, $background-gradient 0%, $color-second 75%);
+  border-radius: 20px;
+
+  position: absolute;
+
+  top: 82px;
+  left: -50px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    // gap: 45px;
+    align-items: center;
+  }
+
+  &__column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__title {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: $color-main;
+    font-family: $font-second;
+  }
+
+  &__link {
+    padding: 0px 0 15px 0;
+    margin: 0px 0 30px 0;
+  }
+  &-active {
+    padding-top: 15px;
+    background: $background-reverse;
+    border-radius: 10px;
+    width: 152px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    @media #{$mouse-device} {
+      &:hover {
+        background: $pink;
+      }
+    }
+  }
+}

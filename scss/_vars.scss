@@ -8,6 +8,8 @@
 
   --background-reverse: #84d7e9;
 
+  --reverse: #ff6476;
+
   --color-main: #fff;
   // --color-main: #1f283d;
   --color-second: #0b0f17;
@@ -23,7 +25,7 @@
   --white: #fff;
   --black: #000;
   --pink: #ff6476;
-	--green: rgb(123 214 130);
+  --green: rgb(123 214 130);
 
   --opacity: rgba(255, 255, 255, 25%);
 }
@@ -39,6 +41,7 @@ $background-second: var(--background-second);
 $background-third: var(--background-third);
 $background-gradient: var(--background-gradient);
 $background-reverse: var(--background-reverse);
+$reverse: var(--reverse);
 
 $color-main: var(--color-main);
 $color-second: var(--color-second);
@@ -53,7 +56,6 @@ $blue: var(--blue);
 
 $opacity: var(--opacity);
 
-
 body.dark {
   --background: #84d7e9;
   --background-second: #00d2ff;
@@ -61,13 +63,15 @@ body.dark {
   --background-gradient: #d0f7ff;
   --background-reverse: #0b0f17;
 
+	--reverse: #0b0f17;
+
   --color-main: #1f283d;
   --color-second: #84d7e9;
   --color-reverse: #fff;
-	--green: rgb(0 125 10);
+  --green: rgb(0 125 10);
 
-	--opacity: rgba(31, 40, 61, 0.25);
-	
+  --opacity: rgba(31, 40, 61, 0.25);
+
   .home__benefits-arrow {
     background: linear-gradient(180deg, rgba(132, 215, 233, 0.1) 0%, rgba(11, 15, 23, 0.17) 100%);
     transition: all 0.2s ease;

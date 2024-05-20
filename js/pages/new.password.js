@@ -25,7 +25,7 @@ function newPassword() {
             }
             for (let color of validText) {
               if (color.parentElement.classList.contains('new-pass__min')) {
-                color.style.color = 'rgb(123 214 130)';
+                color.style.color = 'var(--green)';
               }
             }
             result1 = true;
@@ -58,7 +58,7 @@ function newPassword() {
             }
             for (let color of validText) {
               if (color.parentElement.classList.contains('new-pass__symbol')) {
-                color.style.color = 'rgb(123 214 130)';
+                color.style.color = 'var(--green)';
               }
             }
             result2 = true;
@@ -91,7 +91,7 @@ function newPassword() {
             }
             for (let color of validText) {
               if (color.parentElement.classList.contains('new-pass__number')) {
-                color.style.color = 'rgb(123 214 130)';
+                color.style.color = 'var(--green)';
               }
             }
             result3 = true;
@@ -124,7 +124,7 @@ function newPassword() {
             }
             for (let color of validText) {
               if (color.parentElement.classList.contains('new-pass__upper')) {
-                color.style.color = 'rgb(123 214 130)';
+                color.style.color = 'var(--green)';
               }
             }
             result4 = true;

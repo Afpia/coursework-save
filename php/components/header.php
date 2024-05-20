@@ -2,16 +2,16 @@
 	<div class="header__gradient"></div>
 	<div class="wrapper">
 		<div class="header__inner">
-			<a data-off-click class="header__logo" href="./"><img src="./assets/header/logo.png" alt="Logo" class="logo" /></a>
+			<a class="header__logo" href="/./"><img src="/./assets/header/logo.png" alt="Logo" class="logo" /></a>
 			<nav class="header__nav">
 				<ul class="header__list">
-					<a data-off-click href="./" class="header__nav-link">
+					<a href="/./" class="header__nav-link">
 						<li>Главная</li>
 					</a>
-					<a href="#choice" class="header__nav-link">
+					<a href="/#choice" class="header__nav-link">
 						<li>Страхование</li>
 					</a>
-					<a href="#about" class="header__nav-link">
+					<a href="/#about" class="header__nav-link">
 						<li>О нас</li>
 					</a>
 				</ul>
@@ -37,7 +37,7 @@
 					</svg>
 				</div>
 				<button class="header__call">Позвонить</button>
-				<a href="./page/login.php" class="header__login">
+				<a href="/./page/login.php" class="header__login">
 					<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="header__key">
 						<path d="M8.11265 8.828L16.2204 0.979004L17.681 2.393L16.2204 3.808L18.7759 6.282L17.3153 7.697L14.7587 5.222L13.2981 6.636L15.4891 8.757L14.0284 10.172L11.8375 8.05L9.57326 10.242C10.2761 11.276 10.558 12.5256 10.3644 13.7491C10.1708 14.9727 9.51546 16.0832 8.52508 16.8661C7.5347 17.649 6.27964 18.0486 5.00257 17.9876C3.72551 17.9267 2.51716 17.4094 1.61117 16.536C0.703219 15.6603 0.164011 14.4891 0.0983421 13.25C0.0326727 12.0109 0.445233 10.7925 1.25584 9.83142C2.06645 8.87039 3.21719 8.23544 4.48442 8.05C5.75165 7.86455 7.04484 8.14185 8.11265 8.828ZM7.45465 15.121C7.75557 14.8455 7.99638 14.5143 8.16283 14.1471C8.32929 13.7799 8.41802 13.3842 8.42378 12.9832C8.42954 12.5823 8.35221 12.1843 8.19637 11.8128C8.04052 11.4412 7.80932 11.1037 7.51643 10.8202C7.22355 10.5367 6.87491 10.3128 6.49114 10.162C6.10737 10.0111 5.69626 9.93623 5.28209 9.9418C4.86793 9.94738 4.45912 10.0333 4.07983 10.1944C3.70054 10.3556 3.35848 10.5887 3.07385 10.88C2.50936 11.4458 2.19701 12.2036 2.20407 12.9902C2.21113 13.7768 2.53703 14.5292 3.1116 15.0855C3.68616 15.6417 4.4634 15.9572 5.27592 15.964C6.08844 15.9709 6.87123 15.6685 7.45568 15.122L7.45465 15.121Z" fill="var(--color-main)" />
 					</svg>Войти</a>

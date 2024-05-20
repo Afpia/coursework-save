@@ -9,7 +9,7 @@ if (isset($message->email)) {
 
 	if (!$user) {
 		addValidationError('email', "User not found");
-		$message = 2;
+		$message = 1;
 	} 
 }
 echo json_encode($message);

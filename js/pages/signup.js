@@ -184,12 +184,26 @@ export default function signupValid() {
   }
   validationOnline();
 
+  function emailInput(item) {
+    return !/^\w+([\.-]?\w+)*@\w([\.-]?\w+)*(\.\w{2,8})+$/.test(item.value);
+  }
+  // ФИО
+  //([А-ЯЁ][а-яё]+[\-\s]?){3,}
+
   function validation() {
-    for (const item of input) {
+    for (let item of input) {
       if (item.value == '') {
         result = false;
         error(item, 'Пустое поле');
         buttonBlock();
+      } else if (item.hasAttribute('data-signEmail')) {
+        if (emailInput(item)) {
+          result = false;
+          error(item, 'Неправильный ввод');
+          buttonBlock();
+        }
+      } else {
+        result = true;
       }
     }
     if (calendar.value.length != 10 && calendar.value != '') {
@@ -206,7 +220,6 @@ export default function signupValid() {
       result = false;
       error(inputNewPass, 'Пароль не соответствует');
       buttonBlock();
-      debugger;
     }
     return result;
   }
@@ -249,7 +262,42 @@ export default function signupValid() {
     ev.preventDefault();
 
     if (validation() == true) {
-      alert('hello');
+      let passwordForm = document.querySelector('.signup__input').value;
+      let FIOForm = document.querySelector('.signup__form-input_name').value;
+      let emailForm = document.querySelector('.signup__form-input_mail').value;
+      let dateForm = document.querySelector('.signup__form-input_calendar').value;
+      let phoneForm = document.querySelector('.signup__form-input_tel').value;
+
+      let signUp = {
+        email: emailForm,
+        password: passwordForm,
+        FIO: FIOForm,
+        telephone: phoneForm,
+        date: dateForm,
+      };
+
+      async function formSend() {
+        let response = await fetch('../php/signUp.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify(signUp),
+        });
+        if (response.ok) {
+          let done = await response.json();
+          if (done == 1) {
+            validation(done);
+          } else {
+            barba.go('http://save/page/profile.php');
+          }
+        } else {
+          alert('Ошибка');
+        }
+      }
+      formSend();
+    } else {
+      buttonBlock();
     }
   });
 }

@@ -4,6 +4,7 @@ import signupValid from './pages/signup.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
+import { profileJS } from './pages/profile.js';
 
 barba.init({
   views: [
@@ -38,9 +39,9 @@ barba.init({
       namespace: 'home',
       beforeEnter() {
         preloaderJS();
+        toggle();
       },
       afterEnter() {
-        toggle();
         preloaderJS();
         logoInfinity();
         offClick();
@@ -53,6 +54,14 @@ barba.init({
         logoInfinity();
         birdsNewPassword();
         newPassword();
+      },
+    },
+    {
+      namespace: 'profile',
+      afterEnter() {
+        logoInfinity();
+        toggle();
+        profileJS();
       },
     },
   ],
@@ -123,8 +132,8 @@ function swiper() {
 }
 
 function toggle() {
-  const body = document.querySelector('body');
-  const toggle = document.querySelector('.header__toggle');
+  let body = document.querySelector('body');
+  let toggle = document.querySelector('.header__toggle');
 
   toggle.addEventListener('click', () => {
     body.classList.toggle('dark');
