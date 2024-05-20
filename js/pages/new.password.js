@@ -7,6 +7,10 @@ function newPassword() {
   const submitButton = document.querySelector('.new-pass__form-submit');
 
   let result;
+  let result1;
+  let result2;
+  let result3;
+  let result4;
 
   function validationOnline() {
     inputNewPass.oninput = function loop() {
@@ -24,7 +28,7 @@ function newPassword() {
                 color.style.color = 'rgb(123 214 130)';
               }
             }
-            result = true;
+            result1 = true;
           } else {
             item.classList.remove('validation__hidden');
             for (let iterator of tick) {
@@ -37,7 +41,7 @@ function newPassword() {
                 color.style.color = '';
               }
             }
-            result = false;
+            result1 = false;
           }
         }
       }
@@ -57,7 +61,7 @@ function newPassword() {
                 color.style.color = 'rgb(123 214 130)';
               }
             }
-            result = true;
+            result2 = true;
           } else {
             item.classList.remove('validation__hidden');
             for (let iterator of tick) {
@@ -70,7 +74,7 @@ function newPassword() {
                 color.style.color = '';
               }
             }
-            result = false;
+            result2 = false;
           }
         }
       }
@@ -90,7 +94,7 @@ function newPassword() {
                 color.style.color = 'rgb(123 214 130)';
               }
             }
-            result = true;
+            result3 = true;
           } else {
             item.classList.remove('validation__hidden');
             for (let iterator of tick) {
@@ -103,7 +107,7 @@ function newPassword() {
                 color.style.color = '';
               }
             }
-            result = false;
+            result3 = false;
           }
         }
       }
@@ -123,7 +127,7 @@ function newPassword() {
                 color.style.color = 'rgb(123 214 130)';
               }
             }
-            result = true;
+            result4 = true;
           } else {
             item.classList.remove('validation__hidden');
             for (let iterator of tick) {
@@ -136,7 +140,7 @@ function newPassword() {
                 color.style.color = '';
               }
             }
-            result = false;
+            result4 = false;
           }
         }
       }
@@ -145,6 +149,11 @@ function newPassword() {
         inputNewPass.value = '';
         loop();
       });
+      if (result1 == true && result2 == true && result3 == true && result4 == true) {
+        result = true;
+      } else {
+        result = false;
+      }
     };
 
     return result;
@@ -188,7 +197,6 @@ function newPassword() {
     const closeEye = document.querySelector('.new-pass__eyeClose');
     const eyeButton = document.querySelector('.new-pass__eyeClose-button');
     const eye = document.querySelector('.new-pass__eye');
-    const cross = document.querySelector('.new-pass__cross');
 
     eyeButton.addEventListener('click', () => {
       if (inputPassword.getAttribute('type') == 'password') {

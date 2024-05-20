@@ -29,6 +29,7 @@ body.dark {
   --color-main: #1f283d;
   --color-second: #84d7e9;
   --color-reverse: #fff;
+  --green: rgb(0 125 10);
   --opacity: rgba(31, 40, 61, 0.25);
 }
 body.dark .home__benefits-arrow {
@@ -355,7 +356,7 @@ body.dark .header__switch {
   box-shadow: 0 0 50px 2px rgba(132, 215, 233, 0.2);
   border-radius: 200px;
   width: 100%;
-  min-height: 560px;
+  min-height: 475px;
   max-height: calc(100vh - 278px);
   height: 100%;
   min-width: 274px;
@@ -371,12 +372,17 @@ body.dark .header__switch {
   margin: 0;
   width: 100%;
 }
+@media (max-height: 810px) {
+  .home__title {
+    font-size: 124px;
+  }
+}
 .home__benefits {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.2s ease;
-  min-height: 560px;
+  min-height: 475px;
   max-height: calc(100vh - 278px);
 }
 .home__benefits-arrow {
@@ -835,6 +841,11 @@ body.dark .header__switch {
     outline: none;
   }
 }
+@media (hover: hover) and (pointer: fine) {
+  .login__form-submit:hover {
+    background: #b8f2ff;
+  }
+}
 
 .login__or {
   display: flex;
@@ -902,6 +913,9 @@ body.dark .header__switch {
 }
 @media (hover: hover) and (pointer: fine) {
   .login__button-gosuslugi:hover {
+    background-color: var(--dark);
+  }
+  body.dark .login__button-gosuslugi:hover {
     background-color: var(--dark);
   }
 }
@@ -992,7 +1006,7 @@ body.dark .header__switch {
 }
 .password__title {
   text-align: center;
-  color: var(--white);
+  color: var(--color-main);
   font-weight: 600;
   font-size: 30px;
   font-family: "Urbanist", sans-serif;
@@ -1201,14 +1215,15 @@ body.dark .header__switch {
 .signup__content {
   max-width: 570px;
   width: 100%;
-  background-color: var(--light-dark);
+  background-color: var(--background-second);
   border: 1px solid #394153;
   z-index: 1;
   position: relative;
   padding: 40px 52px 40px 52px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 25px;
 }
 .signup__title {
   margin: 0;
@@ -1224,7 +1239,7 @@ body.dark .header__switch {
   font-family: "Urbanist", sans-serif;
   font-weight: 600;
   font-size: 40px;
-  color: var(--white);
+  color: var(--color-main);
   margin: 0;
   padding-top: 22px;
 }
@@ -1263,14 +1278,22 @@ body.dark .header__switch {
     background-color: var(--pink);
   }
 }
+@media (max-height: 830px) {
+  .signup__button-gosuslugi {
+    display: none;
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .signup__button-gosuslugi:hover {
     background-color: var(--dark);
   }
+  body.dark .signup__button-gosuslugi:hover {
+    background-color: var(--dark);
+  }
 }
 .signup__button-gosuslugi:focus-visible {
-  outline: var(--white);
-  border: 1px solid var(--white);
+  outline: var(--color-main);
+  border: 1px solid var(--color-main);
 }
 @media (hover: none) and (pointer: coarse) {
   .signup__button-gosuslugi:focus-visible {
@@ -1280,7 +1303,7 @@ body.dark .header__switch {
 .signup__button-gosuslugi p {
   font-size: 20px;
   margin: 0;
-  color: var(--white);
+  color: var(--color-main);
 }
 .signup__row {
   display: flex;
@@ -1295,16 +1318,23 @@ body.dark .header__switch {
 .signup__or hr {
   width: 100%;
   height: 1px;
-  background: var(--white);
+  color: var(--color-main);
+  border: none;
+  background-color: var(--color-main);
   margin: 0;
 }
 .signup__or p {
   margin: 0;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--color-main);
   font-size: 20px;
   font-weight: 400;
   font-family: "Poppins", sans-serif;
+}
+@media (max-height: 870px) {
+  .signup__or {
+    display: none;
+  }
 }
 .signup__toLogin {
   color: var(--opacity);
@@ -1317,7 +1347,7 @@ body.dark .header__switch {
   margin: 0;
 }
 .signup__toLogin a {
-  color: var(--white);
+  color: var(--color-main);
 }
 
 .signup__form-input {
@@ -1326,7 +1356,7 @@ body.dark .header__switch {
   width: 100%;
   max-width: 500px;
   height: 62px;
-  background: var(--dark);
+  background: var(--background);
   outline: none;
   font-size: 20px;
   color: var(--opacity);
@@ -1347,8 +1377,8 @@ body.dark .header__switch {
   color: var(--opacity);
 }
 .signup__form-input:focus {
-  border: 1px solid var(--white);
-  color: var(--white);
+  border: 1px solid var(--color-main);
+  color: var(--color-main);
 }
 .signup__form-label {
   position: relative;
@@ -1465,8 +1495,15 @@ body.dark .header__switch {
   color: var(--white);
 }
 
+.signup__eye-hidden {
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+}
+
 .signup__input {
   margin-top: 30px;
+  padding: 16px 10px 16px 56px;
 }
 
 .signup__form-label {
@@ -1475,24 +1512,33 @@ body.dark .header__switch {
 
 .signup__eye {
   position: absolute;
-  top: 48px;
+  bottom: 22px;
+  right: 18px;
+  cursor: pointer;
+}
+
+.signup__eyeClose {
+  position: absolute;
+  bottom: 20px;
+  right: 18px;
+  cursor: pointer;
 }
 
 .signup__cross {
   position: absolute;
-  top: 50px;
+  right: 62px;
+  bottom: 22px;
+  cursor: pointer;
 }
 
-.signup__lock {
+.signup__form-lock {
   position: absolute;
-  top: 48px;
+  bottom: 18px;
+  left: 18px;
+  cursor: pointer;
 }
 
-.signup__form-input:focus ~ .login__eyeClose-button svg path {
-  fill-opacity: 1;
-}
-
-.signup__form-input:focus + .login__form-lock path {
+.signup__form-input:focus ~ .signup__eyeClose-button svg path {
   fill-opacity: 1;
 }
 

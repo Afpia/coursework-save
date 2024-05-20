@@ -10,7 +10,12 @@ export default function signupValid() {
   const validText = document.querySelectorAll('.validation__text');
   const crossLogin = document.querySelector('.signup__cross');
 
-  let result = true;
+  let result;
+  let resultOnline;
+  let result1;
+  let result2;
+  let result3;
+  let result4;
 
   function buttonBlock() {
     button.setAttribute('disabled', ' ');
@@ -32,9 +37,154 @@ export default function signupValid() {
     }, 2000);
   }
 
+  function validationOnline() {
+    inputNewPass.oninput = function loop() {
+      for (let item of cross) {
+        if (item.parentElement.classList.contains('signup__min')) {
+          if (inputNewPass.value.length > 8) {
+            item.classList.add('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__min')) {
+                iterator.classList.remove('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__min')) {
+                color.style.color = 'var(--green)';
+              }
+            }
+            result1 = true;
+          } else {
+            item.classList.remove('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__min')) {
+                iterator.classList.add('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__min')) {
+                color.style.color = '';
+              }
+            }
+            result1 = false;
+          }
+        }
+      }
+      for (let item of cross) {
+        if (item.parentElement.classList.contains('signup__symbol')) {
+          let valueInput = inputNewPass.value;
+          if (/\W/.test(valueInput) && !/[А-Яа-я]/.test(valueInput)) {
+            item.classList.add('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__symbol')) {
+                iterator.classList.remove('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__symbol')) {
+                color.style.color = 'var(--green)';
+              }
+            }
+            result2 = true;
+          } else {
+            item.classList.remove('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__symbol')) {
+                iterator.classList.add('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__symbol')) {
+                color.style.color = '';
+              }
+            }
+            result2 = false;
+          }
+        }
+      }
+
+      for (let item of cross) {
+        if (item.parentElement.classList.contains('signup__number')) {
+          let valueInput = inputNewPass.value;
+          if (/\d/.test(valueInput)) {
+            item.classList.add('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__number')) {
+                iterator.classList.remove('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__number')) {
+                color.style.color = 'var(--green)';
+              }
+            }
+            result3 = true;
+          } else {
+            item.classList.remove('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__number')) {
+                iterator.classList.add('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__number')) {
+                color.style.color = '';
+              }
+            }
+            result3 = false;
+          }
+        }
+      }
+
+      for (let item of cross) {
+        if (item.parentElement.classList.contains('signup__upper')) {
+          let valueInput = inputNewPass.value;
+          if (/[A-Z]/.test(valueInput)) {
+            item.classList.add('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__upper')) {
+                iterator.classList.remove('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__upper')) {
+                color.style.color = 'var(--green)';
+              }
+            }
+            result4 = true;
+          } else {
+            item.classList.remove('validation__hidden');
+            for (let iterator of tick) {
+              if (iterator.parentElement.classList.contains('signup__upper')) {
+                iterator.classList.add('validation__hidden');
+              }
+            }
+            for (let color of validText) {
+              if (color.parentElement.classList.contains('signup__upper')) {
+                color.style.color = '';
+              }
+            }
+            result4 = false;
+          }
+        }
+      }
+
+      crossLogin.addEventListener('click', () => {
+        inputNewPass.value = '';
+        loop();
+      });
+
+      if (result1 == true && result2 == true && result3 == true && result4 == true) {
+        resultOnline = true;
+      } else {
+        resultOnline = false;
+      }
+    };
+    return resultOnline;
+  }
+  validationOnline();
+
   function validation() {
-    // let numberTest = /^((\+7|7|8)+([0-9]){10})$/.test(telephone.value);
-    // console.log(numberTest);
     for (const item of input) {
       if (item.value == '') {
         result = false;
@@ -46,20 +196,18 @@ export default function signupValid() {
       result = false;
       error(calendar, 'Неправильная дата');
       buttonBlock();
-      // debugger;
     }
     if (telephone.value != '' && telephone.value.length <= 15) {
       result = false;
       error(telephone, 'Неправильный телефон');
       buttonBlock();
     }
-
-    if (passwordUser == false && inputNewPass.value != '') {
+    if (resultOnline == false && inputNewPass.value != '') {
       result = false;
       error(inputNewPass, 'Пароль не соответствует');
       buttonBlock();
+      debugger;
     }
-
     return result;
   }
 
@@ -77,143 +225,25 @@ export default function signupValid() {
     });
   });
 
-  let passwordUser = false;
+  function eyeSingUp() {
+    const inputPassword = document.querySelector('.signup__input');
+    const closeEye = document.querySelector('.signup__eyeClose');
+    const eyeButton = document.querySelector('.signup__eyeClose-button');
+    const eye = document.querySelector('.signup__eye');
 
-  inputNewPass.oninput = function loop() {
-    for (let item of cross) {
-      if (item.parentElement.classList.contains('signup__min')) {
-        if (inputNewPass.value.length > 8) {
-          item.classList.add('validation__hidden');
-          for (let iterator of tick) {
-            if (iterator.parentElement.classList.contains('signup__min')) {
-              iterator.classList.remove('validation__hidden');
-            }
-          }
-          for (let color of validText) {
-            if (color.parentElement.classList.contains('signup__min')) {
-              color.style.color = '#ff6476';
-            }
-          }
-          passwordUser = true;
-        } else {
-          item.classList.remove('validation__hidden');
-          for (let iterator of tick) {
-            if (iterator.parentElement.classList.contains('signup__min')) {
-              iterator.classList.add('validation__hidden');
-            }
-          }
-          for (let color of validText) {
-            if (color.parentElement.classList.contains('signup__min')) {
-              color.style.color = '';
-              passwordUser = false;
-            }
-          }
-          passwordUser = false;
-        }
-      }
-    }
-  };
-  for (let item of cross) {
-    if (item.parentElement.classList.contains('signup__symbol')) {
-      let valueInput = inputNewPass.value;
-      if (/\W/.test(valueInput) && !/[А-Яа-я]/.test(valueInput)) {
-        item.classList.add('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__symbol')) {
-            iterator.classList.remove('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__symbol')) {
-            color.style.color = '#ff6476';
-          }
-        }
-        passwordUser = true;
+    eyeButton.addEventListener('click', () => {
+      if (inputPassword.getAttribute('type') == 'password') {
+        inputPassword.setAttribute('type', 'text');
+        closeEye.classList.add('signup__eye-hidden');
+        eye.classList.remove('signup__eye-hidden');
       } else {
-        item.classList.remove('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__symbol')) {
-            iterator.classList.add('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__symbol')) {
-            color.style.color = '';
-          }
-        }
-        passwordUser = false;
+        inputPassword.setAttribute('type', 'password');
+        closeEye.classList.remove('signup__eye-hidden');
+        eye.classList.add('signup__eye-hidden');
       }
-    }
+    });
   }
-
-  for (let item of cross) {
-    if (item.parentElement.classList.contains('signup__number')) {
-      let valueInput = inputNewPass.value;
-      if (/\d/.test(valueInput)) {
-        item.classList.add('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__number')) {
-            iterator.classList.remove('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__number')) {
-            color.style.color = '#ff6476';
-          }
-        }
-        passwordUser = true;
-      } else {
-        item.classList.remove('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__number')) {
-            iterator.classList.add('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__number')) {
-            color.style.color = '';
-          }
-        }
-        passwordUser = false;
-      }
-    }
-  }
-
-  for (let item of cross) {
-    if (item.parentElement.classList.contains('signup__upper')) {
-      let valueInput = inputNewPass.value;
-      if (/[A-Z]/.test(valueInput)) {
-        item.classList.add('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__upper')) {
-            iterator.classList.remove('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__upper')) {
-            color.style.color = '#ff6476';
-          }
-        }
-        passwordUser = true;
-      } else {
-        item.classList.remove('validation__hidden');
-        for (let iterator of tick) {
-          if (iterator.parentElement.classList.contains('signup__upper')) {
-            iterator.classList.add('validation__hidden');
-          }
-        }
-        for (let color of validText) {
-          if (color.parentElement.classList.contains('signup__upper')) {
-            color.style.color = '';
-          }
-        }
-        passwordUser = false;
-      }
-    }
-  }
-  crossLogin.addEventListener('click', () => {
-    inputNewPass.value = '';
-  });
+  eyeSingUp();
 
   button.addEventListener('click', ev => {
     ev.preventDefault();
