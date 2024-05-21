@@ -39,9 +39,9 @@ barba.init({
       namespace: 'home',
       beforeEnter() {
         preloaderJS();
-        toggle();
       },
       afterEnter() {
+        toggle();
         preloaderJS();
         logoInfinity();
         offClick();
@@ -59,8 +59,8 @@ barba.init({
     {
       namespace: 'profile',
       afterEnter() {
-        logoInfinity();
         toggle();
+        logoInfinity();
         profileJS();
       },
     },
@@ -133,9 +133,11 @@ function swiper() {
 
 function toggle() {
   let body = document.querySelector('body');
-  let toggle = document.querySelector('.header__toggle');
+  let toggle = document.querySelectorAll('.header__toggle');
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
+  toggle.forEach(item => {
+    item.addEventListener('click', () => {
+      body.classList.toggle('dark');
+    });
   });
 }

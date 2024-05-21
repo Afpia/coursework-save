@@ -1122,14 +1122,17 @@ body.dark .header__switch {
   visibility: hidden;
 }
 
+.profile__navbar {
+  position: absolute;
+  top: 82px;
+  left: -50px;
+}
+
 .navbar {
   width: 152px;
   height: 100%;
   background: linear-gradient(180deg, var(--background-gradient) 0%, var(--color-second) 75%);
   border-radius: 20px;
-  position: absolute;
-  top: 82px;
-  left: -50px;
 }
 .navbar__inner {
   display: flex;
@@ -1151,11 +1154,11 @@ body.dark .header__switch {
   font-family: "Urbanist", sans-serif;
 }
 .navbar__link {
-  padding: 0px 0 15px 0;
-  margin: 0px 0 30px 0;
+  margin: 30px 0px 0px 0;
 }
 .navbar-active {
   padding-top: 15px;
+  padding-bottom: 15px;
   background: var(--background-reverse);
   border-radius: 10px;
   width: 152px;
@@ -1169,6 +1172,116 @@ body.dark .header__switch {
   .navbar-active:hover {
     background: var(--pink);
   }
+}
+
+.navbar__link-2 {
+  margin-top: 30px;
+  padding-top: 15px;
+}
+
+.admin {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.admin__navbar {
+  position: absolute;
+  top: 82px;
+  left: -50px;
+}
+.admin__title {
+  margin: 0;
+  margin-top: 82px;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--white);
+  font-family: "Urbanist", sans-serif;
+  text-align: center;
+}
+
+.policies {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.policies__navbar {
+  position: absolute;
+  top: 82px;
+  left: -50px;
+}
+.policies__title {
+  margin: 0;
+  margin-top: 82px;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--white);
+  font-family: "Urbanist", sans-serif;
+  text-align: center;
+}
+.policies__content {
+  margin-top: 48px;
+  background: var(--background-second);
+  border-radius: 20px;
+  width: 100vw;
+  max-width: 1080px;
+  min-height: 345px;
+  padding: 30px;
+  display: grid;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: left;
+}
+.policies__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 242px;
+}
+.policies__item h4 {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-main);
+  margin: 0;
+  padding-top: 18px;
+}
+.policies__item h3 {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-main);
+  margin: 0;
+}
+.policies__item h2 {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-main);
+  margin: 0;
+  padding-top: 4px;
+}
+.policies__item img {
+  border-radius: 20px;
+  width: 242px;
+  height: 190px;
+}
+.policies__sort {
+  position: absolute;
+  top: 82px;
+  right: -50px;
+}
+.policies__btn {
+  cursor: pointer;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--background);
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar__link-1 {
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 .new-pass__background {
