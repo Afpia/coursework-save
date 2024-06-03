@@ -9,11 +9,9 @@ $password = $message->password ?? null;
 $user = findUser($email);
 
 if (!$user) {
-	addValidationError('email', "User not found");
 	$message = 1;
 } else
 if (!password_verify($password, $user['password'])) {
-	addValidationError('password', 'Incorrect password');
 	$message = 2;
 } else {
 	$message = 'true';

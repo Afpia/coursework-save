@@ -51,19 +51,19 @@
 									<div class="">
 										<label>
 											<p>Фамилия</p>
-											<input type="text" class="profile__input" name="F" value="Харитонов" disabled>
+											<input type="text" class="profile__input profile__F" name="F" value="Харитонов" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Имя</p>
-											<input type="text" class="profile__input" name="I" value="Андрей" disabled>
+											<input type="text" class="profile__input profile__I" name="I" value="Андрей" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Отчество</p>
-											<input type="text" class="profile__input" name="O" value="Николаевич" disabled>
+											<input type="text" class="profile__input profile__O" name="O" value="Николаевич" disabled>
 										</label>
 									</div>
 								</div>
@@ -71,19 +71,19 @@
 									<div class="">
 										<label>
 											<p>Дата рождения</p>
-											<input type="text" class="profile__input" name="Date" value="20.04.1990" disabled>
+											<input type="text" class="profile__input profile__date" name="date" value="20.04.1990" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Телефон</p>
-											<input type="text" class="profile__input" name="phone" value="+7(950) 495-60-40" disabled>
+											<input type="text" class="profile__input profile__phone" name="phone" value="+7(950) 495-60-40" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Почта</p>
-											<input type="text" class="profile__input" name="email" value="andrey@gmail.com" disabled name="F">
+											<input type="text" class="profile__input profile__email" name="email" value="andrey@gmail.com" disabled name="F">
 										</label>
 
 									</div>

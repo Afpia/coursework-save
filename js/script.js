@@ -1,6 +1,7 @@
 import preloaderJS from './custom/preloader.js';
 import forgotPassword from './pages/forgot.password.js';
 import signupValid from './pages/signup.js';
+import catalog from './pages/catalog.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
@@ -62,6 +63,14 @@ barba.init({
         toggle();
         logoInfinity();
         profileJS();
+      },
+    },
+    {
+      namespace: 'catalog',
+      afterEnter() {
+        toggle();
+        logoInfinity();
+        catalog();
       },
     },
   ],

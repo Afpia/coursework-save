@@ -63,7 +63,7 @@ body.dark {
   --background-gradient: #d0f7ff;
   --background-reverse: #0b0f17;
 
-	--reverse: #0b0f17;
+  --reverse: #0b0f17;
 
   --color-main: #1f283d;
   --color-second: #84d7e9;
@@ -86,6 +86,12 @@ body.dark {
 
   .home__img {
     box-shadow: 0 0 50px 2px rgba(11, 15, 23, 0.2);
+  }
+  .catalog__btn-item {
+    color: rgba($color: #84d7e9, $alpha: 0.6);
+  }
+  .catalog__btn--active {
+    color: $blue;
   }
 }
 

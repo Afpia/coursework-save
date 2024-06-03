@@ -185,7 +185,26 @@ function newPassword() {
     ev.preventDefault();
 
     if (result == true) {
-      return true;
+      let inputNewPassValue = document.querySelector('.new-pass__input').value;
+
+      async function formSend() {
+        let response = await fetch('../php/newPass.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify(inputNewPassValue),
+        });
+        if (response.ok) {
+          let done = await response.json();
+          if (done == 1) {
+            barba.go('http://save/page/login.php');
+          }
+        } else {
+          alert('Ошибка');
+        }
+      }
+      formSend();
     } else {
       buttonBlock();
       validationText();

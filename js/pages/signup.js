@@ -9,6 +9,7 @@ export default function signupValid() {
   const inputNewPass = document.querySelector('.signup__input');
   const validText = document.querySelectorAll('.validation__text');
   const crossLogin = document.querySelector('.signup__cross');
+  const form = document.querySelector('.signup__form');
 
   let result;
   let resultOnline;
@@ -190,7 +191,7 @@ export default function signupValid() {
   // ФИО
   //([А-ЯЁ][а-яё]+[\-\s]?){3,}
 
-  function validation() {
+  function validation(done) {
     for (let item of input) {
       if (item.value == '') {
         result = false;
@@ -200,6 +201,10 @@ export default function signupValid() {
         if (emailInput(item)) {
           result = false;
           error(item, 'Неправильный ввод');
+          buttonBlock();
+        } else if (done == 1) {
+          result = false;
+          error(item, 'Такой пользователь уже есть');
           buttonBlock();
         }
       } else {
@@ -258,7 +263,7 @@ export default function signupValid() {
   }
   eyeSingUp();
 
-  button.addEventListener('click', ev => {
+  form.addEventListener('submit', ev => {
     ev.preventDefault();
 
     if (validation() == true) {
@@ -271,9 +276,9 @@ export default function signupValid() {
       let signUp = {
         email: emailForm,
         password: passwordForm,
-        FIO: FIOForm,
-        telephone: phoneForm,
-        date: dateForm,
+        full_name: FIOForm,
+        phone: phoneForm,
+        date_birth: dateForm,
       };
 
       async function formSend() {
@@ -286,6 +291,8 @@ export default function signupValid() {
         });
         if (response.ok) {
           let done = await response.json();
+          console.log(done);
+          debugger;
           if (done == 1) {
             validation(done);
           } else {

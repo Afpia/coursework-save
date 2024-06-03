@@ -20,9 +20,6 @@ export function profileJS() {
   });
 
   let inputAllValue = document.querySelectorAll('.profile__input').values();
-  for (const iterator of inputAllValue) {
-    console.log(iterator.value);
-  }
   button.addEventListener('click', () => {
     async function formSend() {
       let response = await fetch('../php/changeUser.php', {
@@ -34,6 +31,7 @@ export function profileJS() {
       });
       if (response.ok) {
         let done = await response.json();
+				document.querySelector(".profile__F") = done.f
         /////////////////////////////////////////////
       } else {
         alert('Ошибка');

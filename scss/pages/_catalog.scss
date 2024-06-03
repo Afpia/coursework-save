@@ -1,0 +1,144 @@
+.catalog {
+  // height: 100vh;
+
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    color: $color-main;
+    font-family: $font-second;
+    margin: 0;
+    margin-top: 82px;
+    text-align: center;
+  }
+
+  &__nav {
+    background: $background-reverse;
+    height: 60px;
+    border-radius: 30px;
+    width: 1010px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 34px;
+  }
+  &__btn-item {
+    background: none;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(11, 15, 23, 0.6);
+    cursor: pointer;
+  }
+  &__btn--active {
+    color: $dark;
+  }
+
+  &__tabs {
+    position: relative;
+    width: 100%;
+    height: 358px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+    margin-top: 58px;
+  }
+  &__content-item {
+    border-radius: 20px;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 42px;
+    background: $background-second;
+
+    h3 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 14px;
+      color: $color-main;
+    }
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 16px;
+      color: $color-main;
+      margin-top: 12px;
+    }
+    button {
+      @include button;
+      font-weight: 500;
+      font-size: 14px;
+      color: $color-main;
+      max-width: 140px;
+      background: $pink;
+      border-radius: 10px;
+      margin-top: 28px;
+      height: 44px;
+    }
+  }
+
+	&__left {
+		display: flex;
+		gap: 10px;
+	}
+
+  &__content-recommend {
+    position: relative;
+  }
+  &__recommend {
+    position: absolute;
+    font-weight: 600;
+    font-size: 14px;
+    color: $color-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    border-radius: 20px 20px 0 0;
+    background: $pink;
+  }
+
+  &__info {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-top: 34px;
+    gap: 20px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    h5 {
+      font-weight: 400;
+      font-size: 15px;
+      color: $color-main;
+      margin: 0;
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      color: $color-main;
+      margin: 0;
+    }
+  }
+}
+
+.catalog__content--active {
+  opacity: 1;
+  z-index: $index-6;
+}

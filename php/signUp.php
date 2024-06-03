@@ -1,57 +1,31 @@
 <?php
 require_once __DIR__ . '/helpers.php';
 
-$avatarPath = null;
-$name = $_POST['login'] ?? null;
-$email = $_POST['email'] ?? null;
-$password = $_POST['password'] ?? null;
-$accept_password = $_POST['accept_password'] ?? null;
-$avatar = $_FILES['avatar'] ?? null;
+$message = json_decode(file_get_contents('php://input'));
 
-$_SESSION['validation'] = [];
+$full_name = $message->full_name ?? null;
+$email = $message->email ?? null;
+$phone = $message->phone ?? null;
+$date_birth = $message->date_birth ?? null;
+$password = $message->password ?? null;
 
 $user = findUser($email);
 
 if ($user['status'] == 'active') {
-	addValidationError(fieldName: 'email', message: 'The mail already exists');
-}
-
-if ($password != $accept_password) {
-	addValidationError(fieldName: 'password', message: 'Mismatch');
-};
-
-if (!empty($avatar['name'])) {
-
-	$types = ['image/jpeg', 'image/png'];
-
-	if (!in_array($avatar['type'], $types)) {
-		addValidationError('avatar', 'Incorrect image type');
-	}
-
-	if (($avatar['size'] / 5000000) >= 1) {
-		addValidationError('avatar', 'Image larger than 5 MB');
-	}
-}
-
-if (!empty($_SESSION['validation'])) {
-	redirect(path: '/page/sign.up.php');
-};
-
-if (!empty($avatar['name'])) {
-	$avatarPath = uploadFile($avatar, 'avatar');
+	$message = 1;
+	echo json_encode($message);
 }
 
 $pdo = getPDO();
 
-$query = "INSERT INTO users (name, email, avatar, password, status, role) VALUES (:name, :email, :avatar, :password, :status, :role)";
+$query = "INSERT INTO users (full_name, email, phone, date_birth, password) VALUES (:full_name, :email, :phone, :date_birth, :password)";
 
 $params = [
-	'name' => $name,
+	'name' => $full_name,
 	'email' => $email,
-	'avatar' => $avatarPath,
+	'phone' => $phone,
+	'date_birth' => $date_birth,
 	'password' => password_hash($password, PASSWORD_DEFAULT),
-	'status' => 1,
-	'role' => 1
 ];
 
 $stmt = $pdo->prepare($query);
@@ -65,6 +39,9 @@ try {
 $user = findUser($email);
 
 $_SESSION['user']['id'] = $user['id'];
-$_SESSION['user']['role'] = $user['role'];
+if ($user['is_admin']) {
+	$_SESSION['user']['admin'] = true;
+}
 
-redirect('/');
+$message = 'true';
+echo json_encode($message);
