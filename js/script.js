@@ -1,7 +1,7 @@
-import preloaderJS from './custom/preloader.js';
-import forgotPassword from './pages/forgot.password.js';
-import signupValid from './pages/signup.js';
-import catalog from './pages/catalog.js';
+import { preloaderJS } from './custom/preloader.js';
+import { checkUser } from './pages/forgot.password.js';
+import { signupValid } from './pages/signup.js';
+import { catalog } from './pages/catalog.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
@@ -17,6 +17,7 @@ barba.init({
       afterEnter() {
         birdsLogin();
         logoInfinity();
+        toggleSmall();
         inputValidation();
       },
     },
@@ -26,6 +27,7 @@ barba.init({
         birdsSignUp();
         logoInfinity();
         signupValid();
+        toggleSmall();
       },
     },
     {
@@ -33,13 +35,15 @@ barba.init({
       afterEnter() {
         logoInfinity();
         birdsForgotPassword();
-        forgotPassword();
+        checkUser();
+        toggleSmall();
       },
     },
     {
       namespace: 'home',
       beforeEnter() {
         preloaderJS();
+        profileName();
       },
       afterEnter() {
         toggle();
@@ -55,10 +59,14 @@ barba.init({
         logoInfinity();
         birdsNewPassword();
         newPassword();
+        toggleSmall();
       },
     },
     {
       namespace: 'profile',
+      beforeEnter() {
+        quit();
+      },
       afterEnter() {
         toggle();
         logoInfinity();
@@ -67,10 +75,36 @@ barba.init({
     },
     {
       namespace: 'catalog',
+      beforeEnter() {
+        profileName();
+      },
       afterEnter() {
         toggle();
         logoInfinity();
+        profileName();
         catalog();
+      },
+    },
+    {
+      namespace: 'admin',
+      beforeEnter() {
+        profileName();
+      },
+      afterEnter() {
+        toggle();
+        logoInfinity();
+        profileName();
+      },
+    },
+    {
+      namespace: 'policies',
+      beforeEnter() {
+        profileName();
+      },
+      afterEnter() {
+        toggle();
+        logoInfinity();
+        profileName();
       },
     },
   ],
@@ -140,13 +174,62 @@ function swiper() {
   });
 }
 
+function toggleSmall() {
+  let body = document.querySelector('body');
+
+  if (sessionStorage.getItem('dark')) {
+    body.classList.add('dark');
+  }
+}
+
 function toggle() {
   let body = document.querySelector('body');
   let toggle = document.querySelectorAll('.header__toggle');
 
   toggle.forEach(item => {
-    item.addEventListener('click', () => {
-      body.classList.toggle('dark');
-    });
+    if (sessionStorage.getItem('dark')) {
+      body.classList.add('dark');
+
+      item.addEventListener('click', () => {
+        if (body.classList.contains('dark')) {
+          body.classList.remove('dark');
+          sessionStorage.clear();
+        } else {
+          body.classList.add('dark');
+          sessionStorage.setItem('dark', 1);
+        }
+      });
+    } else {
+      item.addEventListener('click', () => {
+        if (body.classList.contains('dark')) {
+          body.classList.remove('dark');
+          sessionStorage.clear();
+        } else {
+          body.classList.add('dark');
+          sessionStorage.setItem('dark', 1);
+        }
+      });
+    }
   });
+}
+
+function profileName() {
+  const profile = document.querySelectorAll('.header__login');
+  if (sessionStorage.getItem('value')) {
+    for (const iterator of profile) {
+      iterator.href = '/./page/profile.php';
+      iterator.innerHTML = sessionStorage.getItem('value');
+    }
+  }
+}
+
+function quit() {
+  const profileQuit = document.querySelectorAll('.header__login');
+  for (const iterator of profileQuit) {
+    iterator.innerHTML = 'Выйти';
+    iterator.addEventListener('click', () => {
+      sessionStorage.removeItem('value');
+      iterator.href = '/./';
+    });
+  }
 }

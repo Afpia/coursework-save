@@ -1,4 +1,4 @@
-export default function signupValid() {
+export function signupValid() {
   const button = document.querySelector('.signup__form-submit');
   const input = document.querySelectorAll('.signup__form-input');
   const calendar = document.querySelector('.signup__form-input_calendar');
@@ -291,12 +291,12 @@ export default function signupValid() {
         });
         if (response.ok) {
           let done = await response.json();
-          console.log(done);
-          debugger;
           if (done == 1) {
             validation(done);
           } else {
-            barba.go('http://save/page/profile.php');
+            const path = new String(window.location.origin);
+            barba.go(`${path}/page/profile.php`);
+            sessionStorage.setItem('value', 'Профиль');
           }
         } else {
           alert('Ошибка');

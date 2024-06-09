@@ -74,7 +74,6 @@ function inputValidation() {
         if (done == 2) {
           result = false;
           errorInput(input, 'Неправильный пароль');
-
           buttonBlock();
         } else {
           result = true;
@@ -97,7 +96,7 @@ function inputValidation() {
       };
 
       async function formSend() {
-        let response = await fetch('../php/checkUser.php', {
+        let response = await fetch('../php/login.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -111,7 +110,9 @@ function inputValidation() {
           } else if (done == 2) {
             validation(done);
           } else {
-            barba.go('http://save/page/profile.php');
+            const path = new String(window.location.origin);
+            barba.go(`${path}/page/profile.php`);
+            sessionStorage.setItem('value', 'Профиль');
           }
         } else {
           alert('Ошибка');

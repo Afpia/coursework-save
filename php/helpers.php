@@ -32,27 +32,55 @@ function findUser(string $email): array|bool
 {
 	$pdo = getPDO();
 
-	$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email AND status = :status");
-	$stmt->execute(['email' => $email , 'status' => '1']);
-	return $stmt->fetch(\PDO::FETCH_ASSOC);
+	$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email AND status_id = :status");
+	$stmt->execute(['email' => $email, 'status' => '1']);
+
+	$result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+	return $result ? $result : false;
 }
 
-function uploadFile(array $file, string $prefix = '')
+function FindInsurance(string $name): array|bool
 {
-	$uploadPath = __DIR__ . '/../uploads';
+	$pdo = getPDO();
 
-	if (!is_dir($uploadPath)) {
-		mkdir($uploadPath, 0777, true);
-	}
+	$stmt = $pdo->prepare(
+		"SELECT 
+        it.TypeName,
+        it.Price
+    FROM 
+      InsuranceCategory ic
+    JOIN 
+        InsuranceType it ON ic.CategoryID = it.CategoryID
+    WHERE
+      ic.CategoryName = :name
+    "
+	);
+	$stmt->execute(['name' => $name]);
 
-	$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-	$fileName = $prefix . '_' . time() . ".$ext";
+	$result = $stmt->fetchAll();
 
-	$path = "$uploadPath/$fileName";
+	return $result ? $result : false;
+}
 
-	if (!move_uploaded_file($file['tmp_name'], $path)) {
-		die('ошибка при загрузке файла');
-	}
+function FindType(string $name): array|bool
+{
+	$pdo = getPDO();
 
-	return "uploads/$fileName";
+	$stmt = $pdo->prepare(
+		"SELECT 
+        tp.ParameterName,
+        tp.ParameterValue
+    FROM 
+      InsuranceType it
+    JOIN 
+        TypeParameter tp ON tp.TypeID = it.TypeID
+    WHERE
+      it.TypeName = :name"
+	);
+	$stmt->execute(['name' => $name]);
+
+	$result = $stmt->fetchAll();
+
+	return $result ? $result : false;
 }

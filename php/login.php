@@ -10,13 +10,11 @@ $user = findUser($email);
 
 if (!$user) {
 	$message = 1;
-} else
-if (!password_verify($password, $user['password'])) {
+} else if (!password_verify($password, $user['password'])) {
 	$message = 2;
 } else {
 	$message = 'true';
 	$_SESSION['user']['id'] = $user['id'];
-	$_SESSION['user']['role'] = $user['role'];
+	$_SESSION['user']['role'] = $user['is_admin'];
 };
-
 echo json_encode($message);

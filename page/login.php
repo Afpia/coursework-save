@@ -17,7 +17,7 @@ require_once '../php/helpers.php';
 	<link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body data-barba="wrapper">
+<body data-barba="wrapper" class="">
 	<div class="app">
 		<div class="fade" data-barba="container" data-barba-namespace="login">
 			<div class="login">

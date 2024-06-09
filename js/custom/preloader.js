@@ -1,4 +1,4 @@
-export default function preloaderJS() {
+export function preloaderJS() {
   window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
     const fadeDOM = document.querySelectorAll('.fade');

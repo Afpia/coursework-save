@@ -1,4 +1,4 @@
-export default function catalog() {
+export function catalog() {
   const tabItem = document.querySelectorAll('.catalog__btn-item');
   const tabContent = document.querySelectorAll('.catalog__content');
 
@@ -6,7 +6,7 @@ export default function catalog() {
     el.addEventListener('click', open);
   });
 
-  if (window.location.hash != 'http://save/page/catalog.php') {
+  if (window.location.hash != '') {
     const hash = window.location.hash;
 
     tabItem.forEach(function (item) {
@@ -38,6 +38,7 @@ export default function catalog() {
 
     tabTarget.classList.add('catalog__btn--active');
     document.querySelector(`${button}`).classList.add('catalog__content--active');
-    window.location.href = `http://save/page/catalog.php${button}`;
+    const path = new String(window.location.origin + window.location.pathname);
+    window.location.href = `${path}${button}`;
   }
 }

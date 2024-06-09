@@ -16,7 +16,7 @@
 
 <body data-barba="wrapper" class="">
 	<div class="app">
-		<div class="fade" data-barba="container" data-barba-namespace="profile" style="overflow: hidden;">
+		<div class="fade" data-barba="container" data-barba-namespace="policies" style="overflow: hidden;">
 			<?php require_once __DIR__ . '/../php/components/header.php' ?>
 			<div class="wrapper">
 				<div class="policies">

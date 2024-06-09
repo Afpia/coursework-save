@@ -1,4 +1,4 @@
-export default function checkUser() {
+export function checkUser() {
   const buttonUser = document.querySelector('.password__button');
   const inputUser = document.querySelector('.password__input');
   const formUser = document.querySelector('.password__form');

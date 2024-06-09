@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body data-barba="wrapper">
+<body data-barba="wrapper" class="">
 	<div class="app">
 		<div class="fade" data-barba="container" data-barba-namespace="signup">
 			<div class="signup">

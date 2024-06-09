@@ -19,24 +19,18 @@ export function profileJS() {
     }
   });
 
-  let inputAllValue = document.querySelectorAll('.profile__input').values();
-  button.addEventListener('click', () => {
-    async function formSend() {
-      let response = await fetch('../php/changeUser.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify(inputAllValue),
-      });
-      if (response.ok) {
-        let done = await response.json();
-				document.querySelector(".profile__F") = done.f
-        /////////////////////////////////////////////
-      } else {
-        alert('Ошибка');
-      }
-    }
-    formSend();
-  });
+  // async function formSend() {
+  //   let response = await fetch('../php/profile.php', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   });
+  //   if (response.ok) {
+  //     let done = await response.json();
+  //   } else {
+  //     alert('Ошибка');
+  //   }
+  // }
+  // formSend();
 }
