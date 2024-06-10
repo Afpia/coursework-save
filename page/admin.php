@@ -1,3 +1,11 @@
+<?php require_once __DIR__ . '/../php/helpers.php';
+$user = findUserID($_SESSION['user']['id']);
+$FIO = fullNameExtract($user['full_name']);
+$sort = null;
+if (isset($_GET['sort'])) {
+	$sort = $_GET['sort'];
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,7 +30,7 @@
 				<div class="admin">
 					<div class="admin__navbar navbar">
 						<div class="navbar__inner">
-							<h2 class="profile__name navbar__title">Андрей</h2>
+							<h2 class="profile__name navbar__title"><?= $FIO['name'] ?></h2>
 							<div class="navbar__column">
 								<a href="./profile.php" class="navbar__link-1">
 									<svg width="40" height="39" viewBox="0 0 40 39" fill="none" xmlns="http://www.w3.org/2000/svg" class="navbar__homeSvg">
@@ -62,50 +70,59 @@
 									</div>
 								</div>
 							</div>
-							<div class="admin__item">
-								<div class="admin__info">
-									<p class="admin__number admin__text">
-										№342645
-									</p>
-									<p class="admin__user admin__text">
-										Пользователь
-									</p>
-									<p class="admin__typePolicies admin__text">
-										Ипотечное страхование
-									</p>
-									<p class="admin__date admin__text">
-										19.05.2024 - 19.05.2025
-									</p>
-								</div>
-								<div class="admin__panel">
-									<button class="admin__status">Подробнее</button>
-									<form action="" method="POST" class="admin__form">
-										<select name="">
-											<option value="">Новая</option>
-											<option value="">Принята</option>
-											<option value="">Отменена</option>
-											<option value="">Удалена</option>
-										</select>
-										<div class="admin__delete">
-											<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M15.4286 2.8125H12.4864L11.2721 0.817383C10.9321 0.310324 10.4071 0 9.80714 0H6.19286C5.59286 0 5.03571 0.310324 4.72857 0.817383L3.51357 2.8125H0.571429C0.254464 2.8125 0 3.06316 0 3.375V3.9375C0 4.25039 0.254464 4.5 0.571429 4.5H1.14286V15.75C1.14286 16.9928 2.16607 18 3.42857 18H12.5714C13.8339 18 14.8571 16.9928 14.8571 15.75V4.5H15.4286C15.7464 4.5 16 4.25039 16 3.9375V3.375C16 3.06316 15.7464 2.8125 15.4286 2.8125ZM6.13929 1.78875C6.175 1.72723 6.24643 1.6875 6.32143 1.6875H9.67857C9.75446 1.6875 9.82589 1.72705 9.86161 1.78857L10.4857 2.8125H5.51429L6.13929 1.78875ZM12.5714 16.3125H3.42857C3.11296 16.3125 2.85714 16.0607 2.85714 15.75V4.5H13.1429V15.75C13.1429 16.0594 12.8857 16.3125 12.5714 16.3125ZM8 14.625C8.31586 14.625 8.57143 14.3734 8.57143 14.0625V6.75C8.57143 6.43908 8.31586 6.1875 8 6.1875C7.68414 6.1875 7.42857 6.44063 7.42857 6.75V14.0625C7.42857 14.3719 7.68571 14.625 8 14.625ZM5.14286 14.625C5.45714 14.625 5.71429 14.3719 5.71429 14.0625V6.75C5.71429 6.43908 5.45871 6.1875 5.14286 6.1875C4.827 6.1875 4.57143 6.44063 4.57143 6.75V14.0625C4.57143 14.3719 4.82857 14.625 5.14286 14.625ZM10.8571 14.625C11.173 14.625 11.4286 14.3734 11.4286 14.0625V6.75C11.4286 6.43908 11.173 6.1875 10.8571 6.1875C10.5413 6.1875 10.2857 6.44063 10.2857 6.75V14.0625C10.2857 14.3719 10.5429 14.625 10.8571 14.625Z" fill="var(--color-main)" />
-											</svg>
+							<?php if (MyInsurance($sort, 'ps.StatusName')) {
+								foreach (MyInsurance($sort, 'ps.StatusName') as $newPolis) {
+							?>
+									<div class="admin__item">
+										<div class="admin__info">
+											<p class="admin__number admin__text">
+												№<?= $newPolis['PolisID'] ?>
+											</p>
+											<p class="admin__user admin__text">
+												<?= $newPolis['full_name']  ?>
+											</p>
+											<p class="admin__typePolicies admin__text">
+												<?= $newPolis['CategoryName'] ?>: <?= $newPolis['TypeName'] ?>
+											</p>
+											<p class="admin__date admin__text">
+												<?= $newPolis['Started_at'] ?> - <?= $newPolis['Endet_at'] ?>
+											</p>
 										</div>
-									</form>
-
-								</div>
-							</div>
-
+										<div class="admin__panel">
+											<form action="/php/updateStatus.php" method="POST" class="admin__form">
+												<button class="admin__status">Подтвердить</button>
+												<input type="hidden" name="polis" value="<?= $newPolis['PolisID'] ?>">
+												<select name="status">
+													<option value="<?php echo $newPolis['StatusID'] ?>"><?= $newPolis['StatusName'] ?></option>
+													<?php foreach (outStatus($newPolis['StatusID']) as $status) { ?>
+														<option value="<?php echo $status['StatusID'] ?>"><?php echo $status['StatusName'] ?></option>
+													<?php } ?>
+												</select>
+											</form>
+										</div>
+									</div>
+							<?php }
+							} ?>
 						</div>
 					</div>
 					<div class="admin__filter navbar">
 						<div class="navbar__inner">
 							<h2 class="admin__name navbar__title">Сортировка</h2>
-
-							<button class="admin__btn navbar-active">Новые заявки
-							</button>
-							<button class="admin__btn-2">Готовые</button>
-							<button class="admin__btn-3">Отмененные</button>
+							<form action="/page/admin.php">
+								<button class="admin__btn admin-active">Все</button>
+							</form>
+							<form action="/page/admin.php" method="GET">
+								<button class="admin__btn">Новые заявки</button>
+								<input type="hidden" name="sort" value="Новое">
+							</form>
+							<form action="/page/admin.php">
+								<button class="admin__btn">Готовые</button>
+								<input type="hidden" name="sort" value="Принятое">
+							</form>
+							<form action="/page/admin.php">
+								<button class="admin__btn">Отмененные</button>
+								<input type="hidden" name="sort" value="Отмененное">
+							</form>
 						</div>
 					</div>
 				</div>

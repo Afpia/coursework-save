@@ -3,6 +3,7 @@ import { checkUser } from './pages/forgot.password.js';
 import { signupValid } from './pages/signup.js';
 import { catalog } from './pages/catalog.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
+import { policies } from './pages/policies.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
 import { profileJS } from './pages/profile.js';
@@ -49,6 +50,7 @@ barba.init({
         toggle();
         preloaderJS();
         logoInfinity();
+        profileName();
         offClick();
         swiper();
       },
@@ -65,12 +67,14 @@ barba.init({
     {
       namespace: 'profile',
       beforeEnter() {
+        profileJS();
         quit();
+        admin();
       },
       afterEnter() {
+        admin();
         toggle();
         logoInfinity();
-        profileJS();
       },
     },
     {
@@ -93,18 +97,18 @@ barba.init({
       afterEnter() {
         toggle();
         logoInfinity();
-        profileName();
       },
     },
     {
       namespace: 'policies',
       beforeEnter() {
         profileName();
+        admin();
       },
       afterEnter() {
+        policies();
         toggle();
         logoInfinity();
-        profileName();
       },
     },
   ],
@@ -166,7 +170,6 @@ function swiper() {
 
     grabCursor: true,
     spaceBetween: 42,
-    // If we need pagination
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -216,7 +219,7 @@ function toggle() {
 function profileName() {
   const profile = document.querySelectorAll('.header__login');
   if (sessionStorage.getItem('value')) {
-    for (const iterator of profile) {
+    for (let iterator of profile) {
       iterator.href = '/./page/profile.php';
       iterator.innerHTML = sessionStorage.getItem('value');
     }
@@ -225,11 +228,43 @@ function profileName() {
 
 function quit() {
   const profileQuit = document.querySelectorAll('.header__login');
+  const navbarColumn = document.querySelectorAll('.navbar__column a:first-child');
+
+  navbarColumn.forEach(item => {
+    item.addEventListener('click', ev => {
+      ev.preventDefault();
+    });
+  });
   for (const iterator of profileQuit) {
     iterator.innerHTML = 'Выйти';
     iterator.addEventListener('click', () => {
       sessionStorage.removeItem('value');
+      sessionStorage.removeItem('lastname');
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('patronymic');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('phone');
+      sessionStorage.removeItem('date_birth');
+      sessionStorage.removeItem('admin');
       iterator.href = '/./';
     });
   }
 }
+
+function admin() {
+  if (sessionStorage.getItem('admin') == 0) {
+    let navbar = document.querySelectorAll('.navbar__column a:last-child');
+    for (const iterator of navbar) {
+      iterator.style.display = 'none';
+    }
+  }
+}
+
+// function changeName() {
+//   if (sessionStorage.getItem('name')) {
+//     const profile__name = document.querySelectorAll('.profile__name');
+//     for (const iterator of profile__name) {
+//       iterator.innerHTML = sessionStorage.getItem('name');
+//     }
+//   }
+// }

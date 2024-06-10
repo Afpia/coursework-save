@@ -30,32 +30,29 @@
     font-family: $font-main;
     font-weight: 600;
     font-size: 16px;
-    color: $background;
     cursor: pointer;
-    // background: transparent;
-
+    color: $background-third;
     height: 50px;
+    background: none;
   }
 
-  &__btn-2 {
-    padding-top: 13px;
-    background: none;
-    font-family: $font-main;
-    font-weight: 500;
-    font-size: 16px;
-    color: $color-main;
-    cursor: pointer;
+  &-active {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: $background-reverse;
+    border-radius: 10px;
+    width: 152px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    @media #{$mouse-device} {
+      &:hover {
+        background: $pink;
+      }
+    }
   }
-  &__btn-3 {
-    padding-top: 26px;
-    background: none;
-    font-family: $font-main;
-    font-weight: 500;
-    font-size: 16px;
-    color: $color-main;
-    cursor: pointer;
-  }
-
   &__content {
     margin-top: 48px;
     background: $background-second;
@@ -155,16 +152,8 @@
     font-size: 16px;
     color: $color-main;
     margin: 0;
-  }
-  &__delete {
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    background: $background;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    // padding-right: 10px;
+    text-align: center;
   }
   &__status {
     background: none;

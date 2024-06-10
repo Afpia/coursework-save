@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '/../php/helpers.php';
+$user = findUserID($_SESSION['user']['id']);
+$FIO = fullNameExtract($user['full_name']);
+$sort = null;
+if (isset($_GET['sort'])) {
+	$sort = $_GET['sort'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,7 +32,7 @@
 				<div class="policies">
 					<div class="policies__navbar navbar">
 						<div class="navbar__inner">
-							<h2 class="profile__name navbar__title">Андрей</h2>
+							<h2 class="profile__name navbar__title"><?= $FIO['name'] ?></h2>
 							<div class="navbar__column">
 								<a href="./profile.php" class="navbar__link-1">
 									<svg width="40" height="39" viewBox="0 0 40 39" fill="none" xmlns="http://www.w3.org/2000/svg" class="navbar__homeSvg">
@@ -45,23 +55,34 @@
 					<div class="policies__main">
 						<h1 class="policies__title">Полисы</h1>
 						<div class="policies__content">
-							<div class="policies__item">
-								<img src="../assets/policies/4.png" alt="">
-								<h4>№342645</h4>
-								<h3>19.05.2024 - 19.05.2025 </h3>
-								<h2>Ипотечное страхование</h2>
-							</div>
-
+							<?php if (MyInsurance($_SESSION['user']['id'], 'p.UserID')) {
+								foreach (MyInsurance($_SESSION['user']['id'], 'p.UserID', $sort) as $Polises) {
+							?>
+									<div class="policies__item">
+										<img src="../assets/policies/<?php echo $Polises['CategoryImg'] ?>" alt="">
+										<h4>№<?= $Polises['PolisID'] ?></h4>
+										<h3><?= $Polises['Started_at'] ?> - <?= $Polises['Endet_at'] ?> </h3>
+										<h2><?= $Polises['CategoryName'] ?> : <?= $Polises['TypeName'] ?></h2>
+										<p><?= $Polises['StatusName'] ?></p>
+									</div>
+							<?php }
+							}  ?>
 						</div>
 					</div>
 					<div class="policies__sort navbar">
 						<div class="navbar__inner">
 							<h2 class="policies__name navbar__title">Сортировка</h2>
-
-							<button class="policies__btn navbar-active">По дате<svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M7.29289 18.7071C7.68342 19.0976 8.31658 19.0976 8.70711 18.7071L15.0711 12.3431C15.4616 11.9526 15.4616 11.3195 15.0711 10.9289C14.6805 10.5384 14.0474 10.5384 13.6569 10.9289L8 16.5858L2.34315 10.9289C1.95262 10.5384 1.31946 10.5384 0.928932 10.9289C0.538408 11.3195 0.538408 11.9526 0.928932 12.3431L7.29289 18.7071ZM7 0L7 18H9L9 0L7 0Z" fill="var(--background)" />
-								</svg>
-							</button>
+							<form action="/page/policies.php" method="get">
+								<input type="hidden" name="sort" value="<?php if (empty($sort)) {
+																													echo 'DESC';
+																												} ?>">
+								<button class="policies__btn navbar-active">По дате<svg style="<?php if (!empty($sort)) {
+																																									echo 'transform: rotate(180deg)';
+																																								} ?>" width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M7.29289 18.7071C7.68342 19.0976 8.31658 19.0976 8.70711 18.7071L15.0711 12.3431C15.4616 11.9526 15.4616 11.3195 15.0711 10.9289C14.6805 10.5384 14.0474 10.5384 13.6569 10.9289L8 16.5858L2.34315 10.9289C1.95262 10.5384 1.31946 10.5384 0.928932 10.9289C0.538408 11.3195 0.538408 11.9526 0.928932 12.3431L7.29289 18.7071ZM7 0L7 18H9L9 0L7 0Z" fill="var(--background)" />
+									</svg>
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>

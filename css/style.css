@@ -1242,6 +1242,10 @@ body.dark .header__switch {
   padding-top: 42px;
   background: var(--background-second);
 }
+.catalog__content-item > p {
+  margin: 0;
+  margin-top: 12px;
+}
 .catalog__content-item h3 {
   margin: 0;
   font-weight: 400;
@@ -1368,27 +1372,27 @@ body.dark .header__switch {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: var(--background);
   cursor: pointer;
+  color: var(--background-third);
   height: 50px;
-}
-.admin__btn-2 {
-  padding-top: 13px;
   background: none;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--color-main);
-  cursor: pointer;
 }
-.admin__btn-3 {
-  padding-top: 26px;
-  background: none;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--color-main);
-  cursor: pointer;
+.admin-active {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: var(--background-reverse);
+  border-radius: 10px;
+  width: 152px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .admin-active:hover {
+    background: var(--pink);
+  }
 }
 .admin__content {
   margin-top: 48px;
@@ -1481,16 +1485,7 @@ body.dark .header__switch {
   font-size: 16px;
   color: var(--color-main);
   margin: 0;
-}
-.admin__delete {
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  background: var(--background);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  text-align: center;
 }
 .admin__status {
   background: none;
@@ -1586,6 +1581,7 @@ body.dark .header__switch {
   color: var(--color-main);
   margin: 0;
   padding-top: 4px;
+  text-align: center;
 }
 .policies__item img {
   border-radius: 20px;
@@ -1611,6 +1607,10 @@ body.dark .header__switch {
 .navbar__link-1 {
   margin-top: 15px;
   margin-bottom: 30px;
+}
+
+.policies__btn-active {
+  transform: rotate(180deg);
 }
 
 .new-pass__background {

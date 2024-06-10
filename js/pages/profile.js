@@ -18,19 +18,28 @@ export function profileJS() {
       }
     }
   });
-
-  // async function formSend() {
-  //   let response = await fetch('../php/profile.php', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   });
-  //   if (response.ok) {
-  //     let done = await response.json();
-  //   } else {
-  //     alert('Ошибка');
-  //   }
-  // }
-  // formSend();
+  if (!sessionStorage.getItem('name')) {
+    async function formSend() {
+      let response = await fetch('../php/profile.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      });
+      if (response.ok) {
+        let done = await response.json();
+        sessionStorage.setItem('lastname', done.lastname);
+        sessionStorage.setItem('name', done.name);
+        sessionStorage.setItem('patronymic', done.patronymic);
+        sessionStorage.setItem('email', done.email);
+        sessionStorage.setItem('phone', done.phone);
+        sessionStorage.setItem('date_birth', done.date_birth);
+        sessionStorage.setItem('admin', done.is_admin);
+        sessionStorage.setItem('value', 'Профиль');
+      } else {
+        alert('Ошибка');
+      }
+    }
+    formSend();
+  }
 }

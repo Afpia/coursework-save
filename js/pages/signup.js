@@ -295,7 +295,7 @@ export function signupValid() {
             validation(done);
           } else {
             const path = new String(window.location.origin);
-            barba.go(`${path}/page/profile.php`);
+            window.location.href = `${path}/page/profile.php`;
             sessionStorage.setItem('value', 'Профиль');
           }
         } else {

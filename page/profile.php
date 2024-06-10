@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/../php/helpers.php';
+$user = findUserID($_SESSION['user']['id']);
+$FIO = fullNameExtract($user['full_name']);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -23,7 +28,7 @@
 
 					<div class="profile__navbar navbar">
 						<div class="navbar__inner">
-							<h2 class="profile__name navbar__title">Андрей</h2>
+							<h2 class="profile__name navbar__title"><?= $FIO['name'] ?></h2>
 							<div class="navbar__column">
 								<a href="./profile.php" class="navbar-active">
 									<svg width="40" height="39" viewBox="0 0 40 39" fill="none" xmlns="http://www.w3.org/2000/svg" class="navbar__homeSvg">
@@ -45,25 +50,25 @@
 					</div>
 					<div class="profile__main">
 						<h1 class="profile__title">Личные данные <span class="profile__change">изменить</span></h1>
-						<form action="" method="POST" class="">
+						<form action="/php/updateProfile.php" method="POST" class="">
 							<div class="profile__form">
 								<div class="profile__info">
 									<div class="">
 										<label>
 											<p>Фамилия</p>
-											<input type="text" class="profile__input profile__F" name="F" value="Харитонов" disabled>
+											<input type="text" class="profile__input profile__F" name="F" value="<?= $FIO['lastname'] ?>" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Имя</p>
-											<input type="text" class="profile__input profile__I" name="I" value="Андрей" disabled>
+											<input type="text" class="profile__input profile__I" name="I" value="<?= $FIO['name'] ?>" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Отчество</p>
-											<input type="text" class="profile__input profile__O" name="O" value="Николаевич" disabled>
+											<input type="text" class="profile__input profile__O" name="O" value="<?= $FIO['patronomic'] ?>" disabled>
 										</label>
 									</div>
 								</div>
@@ -71,19 +76,19 @@
 									<div class="">
 										<label>
 											<p>Дата рождения</p>
-											<input type="text" class="profile__input profile__date" name="date" value="20.04.1990" disabled>
+											<input type="text" class="profile__input profile__date" name="date_birth" value="<?= $user['date_birth'] ?>" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Телефон</p>
-											<input type="text" class="profile__input profile__phone" name="phone" value="+7(950) 495-60-40" disabled>
+											<input type="text" class="profile__input profile__phone" name="phone" value="<?= $user['phone'] ?>" disabled>
 										</label>
 									</div>
 									<div class="">
 										<label>
 											<p>Почта</p>
-											<input type="text" class="profile__input profile__email" name="email" value="andrey@gmail.com" disabled name="F">
+											<input type="text" class="profile__input profile__email" name="email" value="<?= $user['email'] ?>" disabled name="F">
 										</label>
 
 									</div>
