@@ -198,7 +198,8 @@ function newPassword() {
         if (response.ok) {
           let done = await response.json();
           if (done == 1) {
-            barba.go('http://save/page/login.php');
+            const path = new String(window.location.origin);
+            barba.go(`${path}/page/login.php`);
           }
         } else {
           alert('Ошибка');

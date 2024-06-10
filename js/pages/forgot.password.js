@@ -70,7 +70,8 @@ export function checkUser() {
           if (done == 1) {
             validationUser(done);
           } else {
-            barba.go('http://save/page/new.password.php');
+            const path = new String(window.location.origin);
+            barba.go(`${path}/page/new.password.php`);
           }
         } else {
           alert('Ошибка');
