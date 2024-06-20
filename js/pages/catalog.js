@@ -2,14 +2,14 @@ export function catalog() {
   const tabItem = document.querySelectorAll('.catalog__btn-item');
   const tabContent = document.querySelectorAll('.catalog__content');
 
-  console.log(window.location.href);
   tabItem.forEach(el => {
     el.addEventListener('click', open);
   });
 
-  if (window.location.hash != '') {
-    const hash = window.location.hash;
+  if (window.location.search != '') {
+    const hash = window.location.search.replace(/[\?\.]/g, '');
 
+    console.log(hash);
     tabItem.forEach(function (item) {
       item.classList.remove('catalog__btn--active');
     });
@@ -23,7 +23,7 @@ export function catalog() {
         el.classList.add('catalog__btn--active');
       }
     });
-    document.querySelector(`${hash}`).classList.add('catalog__content--active');
+    document.getElementById(`${hash}`).classList.add('catalog__content--active');
   }
   function open(ev) {
     const tabTarget = ev.target;
@@ -38,16 +38,16 @@ export function catalog() {
     });
 
     tabTarget.classList.add('catalog__btn--active');
-    document.querySelector(`${button}`).classList.add('catalog__content--active');
+    document.getElementById(`${button}`).classList.add('catalog__content--active');
     const path = new String(window.location.origin + window.location.pathname);
-    window.location.href = `${path}${button}`;
+		history.pushState(null, `${path}?${button}`, `${path}?${button}`);
   }
 
   const button = document.querySelectorAll('.catalog__content-item button');
 
   button.forEach(item => {
     item.addEventListener('click', ev => {
-			let result = confirm('Подтвердить покупку')
+      let result = confirm('Подтвердить покупку');
       if (result) return;
       ev.preventDefault();
     });

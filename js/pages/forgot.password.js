@@ -55,10 +55,9 @@ export function checkUser() {
 
       let userNewPassword = {
         email: emailForm,
-        // password: passwordForm,
       };
       async function formSend() {
-        let response = await fetch('../page/newPassword.php', {
+        let response = await fetch('../php/mail.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -70,8 +69,9 @@ export function checkUser() {
           if (done == 1) {
             validationUser(done);
           } else {
-            const path = new String(window.location.origin);
-            barba.go(`${path}/page/new.password.php`);
+            alert('Вам отправилось письмо для подтверждения');
+            buttonBlockUser();
+            localStorage.setItem('restoreEmail', emailForm);
           }
         } else {
           alert('Ошибка');

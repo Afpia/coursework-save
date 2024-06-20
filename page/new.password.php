@@ -1,10 +1,6 @@
 <?php
-$message = json_decode(file_get_contents('php://input'));
-$email = $message->email ?? null;
-$user = findUser($email);
-if (!$user) {
-	redirect('/page/forgot.password.php');
-}
+require_once '../php/helpers.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -32,9 +28,8 @@ if (!$user) {
 					</div>
 					<h1 class="password__title">Восстановление пароля</h1>
 					<p class="password__text">Введите новый пароль</p>
-					<form action="#" method="" class="new-pass__form">
+					<form action="" method="POST" class="new-pass__form">
 						<label class="new-pass__form-label">
-							<input type="hidden" name="email" value="<?php echo $email ?>">
 							<input type="password" name="password" placeholder="Новый пароль" class="new-pass__input" />
 							<svg xmlns="http://www.w3.org/2000/svg" width="21" height="27" viewBox="0 0 21 27" fill="none" class="new-pass__form-lock">
 								<path d="M18.375 26.25H2.625C1.92881 26.25 1.26113 25.9734 0.768845 25.4812C0.276562 24.9889 0 24.3212 0 23.625V14C0 13.3038 0.276562 12.6361 0.768845 12.1438C1.26113 11.6516 1.92881 11.375 2.625 11.375H18.375C19.0712 11.375 19.7389 11.6516 20.2312 12.1438C20.7234 12.6361 21 13.3038 21 14V23.625C21 24.3212 20.7234 24.9889 20.2312 25.4812C19.7389 25.9734 19.0712 26.25 18.375 26.25ZM2.625 13.125C2.39294 13.125 2.17038 13.2172 2.00628 13.3813C1.84219 13.5454 1.75 13.7679 1.75 14V23.625C1.75 23.8571 1.84219 24.0796 2.00628 24.2437C2.17038 24.4078 2.39294 24.5 2.625 24.5H18.375C18.6071 24.5 18.8296 24.4078 18.9937 24.2437C19.1578 24.0796 19.25 23.8571 19.25 23.625V14C19.25 13.7679 19.1578 13.5454 18.9937 13.3813C18.8296 13.2172 18.6071 13.125 18.375 13.125H2.625Z" fill="var(--color-main)" fill-opacity="0.25" />

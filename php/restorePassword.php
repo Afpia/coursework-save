@@ -23,4 +23,5 @@ try {
 	die($e->getMessage());
 }
 
-echo json_encode('true');
+$message = 1;
+echo json_encode($message);

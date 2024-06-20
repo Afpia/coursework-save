@@ -25,10 +25,10 @@
 				<div class="catalog">
 					<h1 class="catalog__title">Купить полис</h1>
 					<div class="catalog__nav">
-						<button class="catalog__btn-item" data-button="#content-1">Автострахование</button>
-						<button class="catalog__btn-item" data-button="#content-2">Страхование ипотеки</button>
-						<button class="catalog__btn-item" data-button="#content-3">Страхование жилья</button>
-						<button class="catalog__btn-item" data-button="#content-4">Страхование жизни</button>
+						<button class="catalog__btn-item" data-button="content-1">Автострахование</button>
+						<button class="catalog__btn-item" data-button="content-2">Страхование ипотеки</button>
+						<button class="catalog__btn-item" data-button="content-3">Страхование жилья</button>
+						<button class="catalog__btn-item" data-button="content-4">Страхование жизни</button>
 					</div>
 					<div class="catalog__tabs">
 						<div class="catalog__content" data-button-content id="content-1">

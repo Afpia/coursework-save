@@ -61,7 +61,9 @@
 
     max-width: 1080px;
     min-height: 345px;
+		max-height: 480px;
     padding: 30px;
+		overflow: hidden;
   }
 
   &__header {

@@ -92,7 +92,6 @@ $FIO = fullNameExtract($user['full_name']);
 											<p>Почта</p>
 											<input type="text" class="profile__input profile__email" name="email" value="<?= $user['email'] ?>" disabled name="F">
 										</label>
-
 									</div>
 								</div>
 							</div>

@@ -1401,7 +1401,9 @@ body.dark .header__switch {
   width: 100vw;
   max-width: 1080px;
   min-height: 345px;
+  max-height: 480px;
   padding: 30px;
+  overflow: hidden;
 }
 .admin__header {
   display: flex;

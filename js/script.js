@@ -2,14 +2,13 @@ import { preloaderJS } from './custom/preloader.js';
 import { checkUser } from './pages/forgot.password.js';
 import { signupValid } from './pages/signup.js';
 import { catalog } from './pages/catalog.js';
+import { admin } from './pages/admin.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
-// import { policies } from './pages/policies.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
 import { profileJS } from './pages/profile.js';
 
 barba.init({
-  debug: true,
   views: [
     {
       namespace: 'login',
@@ -55,7 +54,7 @@ barba.init({
         profileName();
         offClick();
         swiper();
-        link();
+        // link();
       },
     },
     {
@@ -100,6 +99,7 @@ barba.init({
       afterEnter() {
         toggle();
         logoInfinity();
+        admin();
       },
     },
     {
@@ -134,14 +134,15 @@ barba.init({
 });
 
 function link() {
-  const all = document.querySelectorAll('.choice__item');
-
-  all.forEach(item => {
-    item.addEventListener('click', () => {
-      // barba.go('./page/catalog.php#content-1');
-      window.location.href = './page/catalog.php#content-2';
-    });
-  });
+  // const all = document.querySelectorAll('.choice__item');
+  const link = window.location.href;
+  window.location.replace(link);
+  // all.forEach(item => {
+  //   item.addEventListener('click', () => {
+  //     // barba.go('./page/catalog.php#content-1');
+  //     window.location.href = './page/catalog.php#content-2';
+  //   });
+  // });
 }
 
 function logoInfinity() {

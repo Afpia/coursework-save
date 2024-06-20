@@ -107,7 +107,7 @@
 					<div class="wrapper">
 						<div class="choice__inner">
 							<div class="choice__row">
-								<a href="/./page/catalog.php#content-3" class="choice__item-1 choice__item">
+								<a href="/./page/catalog.php?content-3" class="choice__item-1 choice__item">
 									<img src="./assets/index/image-1.jpg" alt="1" />
 									<button class="choice__button">Страхование жилья</button>
 								</a>
@@ -123,15 +123,15 @@
 								</div>
 							</div>
 							<div class="choice__row-second">
-								<a href="/./page/catalog.php#content-1" class="choice__item-4 choice__item">
+								<a href="/./page/catalog.php?content-1" class="choice__item-4 choice__item">
 									<img src="./assets/index/image-3.png" alt="3" />
 									<button class="choice__button">Автострахование</button>
 								</a>
-								<a href="/./page/catalog.php#content-2" class="choice__item-5 choice__item">
+								<a href="/./page/catalog.php?content-2" class="choice__item-5 choice__item">
 									<img src="./assets/index/image-4.png" alt="4" />
 									<button class="choice__button">Страхование ипотеки</button>
 								</a>
-								<a href="/./page/catalog.php#content-4" class="choice__item-6 choice__item">
+								<a href="/./page/catalog.php?content-4" class="choice__item-6 choice__item">
 									<img src="./assets/index/image-5.png" alt="5" />
 									<button class="choice__button">Все для здоровья</button>
 								</a>

@@ -186,20 +186,27 @@ function newPassword() {
 
     if (result == true) {
       let inputNewPassValue = document.querySelector('.new-pass__input').value;
+      let restoreEmail = localStorage.getItem('restoreEmail');
 
+      let data = {
+        email: restoreEmail,
+        password: inputNewPassValue,
+      };
+      console.log(restoreEmail);
       async function formSend() {
-        let response = await fetch('../php/newPass.php', {
+        let response = await fetch('../php/restorePassword.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
           },
-          body: JSON.stringify(inputNewPassValue),
+          body: JSON.stringify(data),
         });
         if (response.ok) {
           let done = await response.json();
           if (done == 1) {
             const path = new String(window.location.origin);
             barba.go(`${path}/page/login.php`);
+            localStorage.clear();
           }
         } else {
           alert('Ошибка');
