@@ -1461,6 +1461,10 @@ body.dark .header__switch {
   outline: none;
   max-width: 195px;
 }
+.admin__search-icon {
+  background: none;
+  cursor: pointer;
+}
 .admin__item {
   display: flex;
   align-items: center;
@@ -1486,6 +1490,15 @@ body.dark .header__switch {
   color: var(--color-main);
   margin: 0;
   text-align: center;
+}
+.admin__date {
+  width: 150px;
+}
+.admin__user {
+  width: 100px;
+}
+.admin__typePolicies {
+  width: 400px;
 }
 .admin__status {
   background: none;
@@ -1577,7 +1590,7 @@ body.dark .header__switch {
 }
 .policies__item h2 {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--color-main);
   margin: 0;
   padding-top: 4px;

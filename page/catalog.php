@@ -38,7 +38,7 @@
 									<h4><?= $insurance['Price'] ?> Р / год</h4>
 									<form action="/php/policies.php" method="POST">
 										<input type="hidden" value="<?php echo $insurance['TypeID']; ?>" name="TypeID">
-										<button onclick="confirm('Подтвердить покупку?')">Купить онлайн</button>
+										<button>Купить онлайн</button>
 									</form>
 									<div class="catalog__info">
 										<?php foreach (FindType($insurance['TypeName']) as $type) { ?>
@@ -64,7 +64,7 @@
 									<h4><?= $insurance['Price'] ?> Р / год</h4>
 									<form action="/php/policies.php" method="POST">
 										<input type="hidden" value="<?php echo $insurance['TypeID']; ?>" name="TypeID">
-										<button onclick="confirm('Подтвердить покупку?')">Купить онлайн</button>
+										<button>Купить онлайн</button>
 									</form>
 									<p>Риски:</p>
 									<div class="catalog__info">
@@ -91,7 +91,7 @@
 									<h4><?= $insurance['Price'] ?> Р / месяц</h4>
 									<form action="/php/policies.php" method="POST">
 										<input type="hidden" value="<?php echo $insurance['TypeID']; ?>" name="TypeID">
-										<button onclick="confirm('Подтвердить покупку?')">Купить онлайн</button>
+										<button>Купить онлайн</button>
 									</form>
 									<div class="catalog__info">
 										<?php foreach (FindType($insurance['TypeName']) as $type) { ?>
@@ -117,7 +117,7 @@
 									<h4><?= $insurance['Price'] ?> Р / месяц</h4>
 									<form action="/php/policies.php" method="POST">
 										<input type="hidden" value="<?php echo $insurance['TypeID']; ?>" name="TypeID">
-										<button onclick="confirm('Подтвердить покупку?')">Купить онлайн</button>
+										<button>Купить онлайн</button>
 									</form>
 									<div class="catalog__info">
 										<?php foreach (FindType($insurance['TypeName']) as $type) { ?>

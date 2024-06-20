@@ -26,7 +26,7 @@ if (isset($_GET['sort'])) {
 
 <body data-barba="wrapper" class="">
 	<div class="app">
-		<div class="fade" data-barba="container" data-barba-namespace="policies" style="overflow: hidden;">
+		<div class="fade" data-barba="container" data-barba-namespace="policies" style="overflow-x: hidden;">
 			<?php require_once __DIR__ . '/../php/components/header.php' ?>
 			<div class="wrapper">
 				<div class="policies">

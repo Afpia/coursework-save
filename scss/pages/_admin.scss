@@ -126,11 +126,13 @@
     outline: none;
     max-width: 195px;
   }
-
+  &__search-icon {
+    background: none;
+    cursor: pointer;
+  }
   &__item {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     gap: 50px;
     padding-top: 20px;
   }
@@ -155,6 +157,15 @@
     // padding-right: 10px;
     text-align: center;
   }
+  &__date {
+    width: 150px;
+  }
+  &__user {
+    width: 100px;
+  }
+	&__typePolicies {
+		width: 400px;
+	}
   &__status {
     background: none;
     font-weight: 600;

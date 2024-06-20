@@ -2,7 +2,7 @@ export function catalog() {
   const tabItem = document.querySelectorAll('.catalog__btn-item');
   const tabContent = document.querySelectorAll('.catalog__content');
 
-  // console.log(window.location.href);
+  console.log(window.location.href);
   tabItem.forEach(el => {
     el.addEventListener('click', open);
   });
@@ -42,4 +42,14 @@ export function catalog() {
     const path = new String(window.location.origin + window.location.pathname);
     window.location.href = `${path}${button}`;
   }
+
+  const button = document.querySelectorAll('.catalog__content-item button');
+
+  button.forEach(item => {
+    item.addEventListener('click', ev => {
+			let result = confirm('Подтвердить покупку')
+      if (result) return;
+      ev.preventDefault();
+    });
+  });
 }

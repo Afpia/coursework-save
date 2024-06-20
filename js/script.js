@@ -9,6 +9,7 @@ import { newPassword } from './pages/new.password.js';
 import { profileJS } from './pages/profile.js';
 
 barba.init({
+  debug: true,
   views: [
     {
       namespace: 'login',
@@ -54,6 +55,7 @@ barba.init({
         profileName();
         offClick();
         swiper();
+        link();
       },
     },
     {
@@ -82,14 +84,12 @@ barba.init({
       namespace: 'catalog',
       beforeEnter() {
         profileName();
-        // catalog();
       },
       afterEnter() {
         toggle();
         logoInfinity();
         profileName();
         catalog();
-        // catalog();
       },
     },
     {
@@ -132,6 +132,17 @@ barba.init({
     },
   ],
 });
+
+function link() {
+  const all = document.querySelectorAll('.choice__item');
+
+  all.forEach(item => {
+    item.addEventListener('click', () => {
+      // barba.go('./page/catalog.php#content-1');
+      window.location.href = './page/catalog.php#content-2';
+    });
+  });
+}
 
 function logoInfinity() {
   gsap.to('.logo', { repeat: -1, rotate: 360, duration: 5, yoyo: true });
