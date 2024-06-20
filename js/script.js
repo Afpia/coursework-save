@@ -3,7 +3,7 @@ import { checkUser } from './pages/forgot.password.js';
 import { signupValid } from './pages/signup.js';
 import { catalog } from './pages/catalog.js';
 import { birdsSignUp, birdsNewPassword, birdsForgotPassword, birdsLogin } from './custom/birds.js';
-import { policies } from './pages/policies.js';
+// import { policies } from './pages/policies.js';
 import { eye, inputValidation } from './pages/login.js';
 import { newPassword } from './pages/new.password.js';
 import { profileJS } from './pages/profile.js';
@@ -45,6 +45,7 @@ barba.init({
       beforeEnter() {
         preloaderJS();
         profileName();
+        // catalog();
       },
       afterEnter() {
         toggle();
@@ -67,26 +68,28 @@ barba.init({
     {
       namespace: 'profile',
       beforeEnter() {
+        // admin();
         profileJS();
         quit();
-        admin();
       },
       afterEnter() {
-        admin();
         toggle();
         logoInfinity();
+        // admin();
       },
     },
     {
       namespace: 'catalog',
       beforeEnter() {
         profileName();
+        // catalog();
       },
       afterEnter() {
         toggle();
         logoInfinity();
         profileName();
         catalog();
+        // catalog();
       },
     },
     {
@@ -103,10 +106,10 @@ barba.init({
       namespace: 'policies',
       beforeEnter() {
         profileName();
-        admin();
+        // admin();
       },
       afterEnter() {
-        policies();
+        // policies();
         toggle();
         logoInfinity();
       },
@@ -251,14 +254,14 @@ function quit() {
   }
 }
 
-function admin() {
-  if (sessionStorage.getItem('admin') == 0) {
-    let navbar = document.querySelectorAll('.navbar__column a:last-child');
-    for (const iterator of navbar) {
-      iterator.style.display = 'none';
-    }
-  }
-}
+// function admin() {
+//   if (sessionStorage.getItem('admin') == 0) {
+//     let navbar = document.querySelectorAll('.navbar__column a:last-child');
+//     for (const iterator of navbar) {
+//       iterator.style.display = 'block';
+//     }
+//   }
+// }
 
 // function changeName() {
 //   if (sessionStorage.getItem('name')) {

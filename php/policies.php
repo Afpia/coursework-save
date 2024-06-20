@@ -3,9 +3,9 @@ require_once __DIR__ . '/helpers.php';
 
 $TypeID = $_POST['TypeID'];
 $UserID = $_SESSION['user']['id'];
+$today = (new DateTime());
+$EndDate = $today->modify('+1 month')->format('Y-m-d');
 $Today = (new DateTime())->format('Y-m-d');
-$EndDate = $today->format('Y-m-d');
-
 $pdo = getPDO();
 
 $query = "INSERT INTO Policies (TypeID, UserID , Started_at, Endet_at) VALUES (:TypeID, :UserID, :Started_at, :Endet_at)";
@@ -25,4 +25,4 @@ try {
 	die($e->getMessage());
 }
 
-redirect('/page/catalog.php');
+redirect('/page/policies.php');

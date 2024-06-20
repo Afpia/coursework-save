@@ -27,7 +27,7 @@ require_once '../php/helpers.php';
 					</div>
 					<h1 class="password__title">Восстановление пароля</h1>
 					<p class="password__text">Укажите адрес электронной почты</p>
-					<form action="" class="password__form">
+					<form action="" method="POST" class="password__form">
 						<label class="login__form-label">
 							<input type="text" name="email" placeholder="Адрес почты" class="login__form-input login__form-input_mail password__input" />
 							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22" fill="none" class="login__form-mail">

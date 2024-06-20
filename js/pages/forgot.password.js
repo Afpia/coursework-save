@@ -58,7 +58,7 @@ export function checkUser() {
         // password: passwordForm,
       };
       async function formSend() {
-        let response = await fetch('../php/restorePassword.php', {
+        let response = await fetch('../page/newPassword.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',

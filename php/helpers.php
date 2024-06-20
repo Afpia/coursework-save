@@ -49,7 +49,8 @@ function FindInsurance(string $name): array|bool
 	$stmt = $pdo->prepare(
 		"SELECT 
     		it.TypeName,
-    		it.Price
+    		it.Price,
+			it.TypeID
 		FROM 
 			InsuranceCategory ic
 		JOIN 

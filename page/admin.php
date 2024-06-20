@@ -2,8 +2,15 @@
 $user = findUserID($_SESSION['user']['id']);
 $FIO = fullNameExtract($user['full_name']);
 $sort = null;
+$table = null;
 if (isset($_GET['sort'])) {
 	$sort = $_GET['sort'];
+	$table = 'ps.StatusName';
+}
+
+if (isset($_GET['number'])) {
+	$sort = $_GET['number'];
+	$table = 'p.PolisID';
 }
 ?>
 <!DOCTYPE html>
@@ -57,21 +64,25 @@ if (isset($_GET['sort'])) {
 								<h2 class="admin__subtitle">Заявки<span class="admin__all">все</span></h2>
 								<div class="admin__search">
 									<div class="admin__search-inner">
-										<label>
-											<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M0.056 12V0.575999H2.632L6.584 8.704H6.728C6.70667 8.43733 6.68 8.12267 6.648 7.76C6.616 7.38667 6.58933 7.008 6.568 6.624C6.54667 6.22933 6.536 5.872 6.536 5.552V0.575999H8.616V12H6.056L2.072 3.824H1.96C1.992 4.112 2.01867 4.45867 2.04 4.864C2.072 5.25867 2.09867 5.65333 2.12 6.048C2.14133 6.44267 2.152 6.78933 2.152 7.088V12H0.056ZM9.704 12V10.528H14.696V12H9.704ZM12.184 9.856C11.672 9.856 11.2187 9.744 10.824 9.52C10.4293 9.296 10.1147 8.976 9.88 8.56C9.656 8.13333 9.544 7.616 9.544 7.008C9.544 6.10133 9.784 5.40267 10.264 4.912C10.744 4.42133 11.3947 4.176 12.216 4.176C12.7173 4.176 13.1653 4.288 13.56 4.512C13.9653 4.72533 14.28 5.04533 14.504 5.472C14.7387 5.888 14.856 6.4 14.856 7.008C14.856 7.91467 14.616 8.61867 14.136 9.12C13.656 9.61067 13.0053 9.856 12.184 9.856ZM12.2 8.576C12.5733 8.576 12.84 8.448 13 8.192C13.1707 7.92533 13.256 7.53067 13.256 7.008C13.256 6.48533 13.1707 6.096 13 5.84C12.84 5.584 12.5733 5.456 12.2 5.456C11.8267 5.456 11.5547 5.584 11.384 5.84C11.2133 6.096 11.128 6.48533 11.128 7.008C11.128 7.53067 11.2133 7.92533 11.384 8.192C11.5547 8.448 11.8267 8.576 12.2 8.576Z" fill="white" />
-											</svg>
-											<input class="admin__search-input" type="number" minlength="3">
-											<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-												<path d="M18.9999 18.9999L14.6499 14.6499" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-											</svg>
-										</label>
+										<form action="" method="get">
+											<label>
+												<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.056 12V0.575999H2.632L6.584 8.704H6.728C6.70667 8.43733 6.68 8.12267 6.648 7.76C6.616 7.38667 6.58933 7.008 6.568 6.624C6.54667 6.22933 6.536 5.872 6.536 5.552V0.575999H8.616V12H6.056L2.072 3.824H1.96C1.992 4.112 2.01867 4.45867 2.04 4.864C2.072 5.25867 2.09867 5.65333 2.12 6.048C2.14133 6.44267 2.152 6.78933 2.152 7.088V12H0.056ZM9.704 12V10.528H14.696V12H9.704ZM12.184 9.856C11.672 9.856 11.2187 9.744 10.824 9.52C10.4293 9.296 10.1147 8.976 9.88 8.56C9.656 8.13333 9.544 7.616 9.544 7.008C9.544 6.10133 9.784 5.40267 10.264 4.912C10.744 4.42133 11.3947 4.176 12.216 4.176C12.7173 4.176 13.1653 4.288 13.56 4.512C13.9653 4.72533 14.28 5.04533 14.504 5.472C14.7387 5.888 14.856 6.4 14.856 7.008C14.856 7.91467 14.616 8.61867 14.136 9.12C13.656 9.61067 13.0053 9.856 12.184 9.856ZM12.2 8.576C12.5733 8.576 12.84 8.448 13 8.192C13.1707 7.92533 13.256 7.53067 13.256 7.008C13.256 6.48533 13.1707 6.096 13 5.84C12.84 5.584 12.5733 5.456 12.2 5.456C11.8267 5.456 11.5547 5.584 11.384 5.84C11.2133 6.096 11.128 6.48533 11.128 7.008C11.128 7.53067 11.2133 7.92533 11.384 8.192C11.5547 8.448 11.8267 8.576 12.2 8.576Z" fill="white" />
+												</svg>
+												<input class="admin__search-input" name="number" type="number" minlength="3" value="<?= $sort ?>">
+												<button>
+													<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M18.9999 18.9999L14.6499 14.6499" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</svg>
+												</button>
+											</label>
+										</form>
 									</div>
 								</div>
 							</div>
-							<?php if (MyInsurance($sort, 'ps.StatusName')) {
-								foreach (MyInsurance($sort, 'ps.StatusName') as $newPolis) {
+							<?php if (MyInsurance($sort, $table)) {
+								foreach (MyInsurance($sort, $table) as $newPolis) {
 							?>
 									<div class="admin__item">
 										<div class="admin__info">
@@ -109,18 +120,26 @@ if (isset($_GET['sort'])) {
 						<div class="navbar__inner">
 							<h2 class="admin__name navbar__title">Сортировка</h2>
 							<form action="/page/admin.php">
-								<button class="admin__btn admin-active">Все</button>
+								<button class="admin__btn <?php if ($sort == null) {
+																						echo 'admin-active';
+																					} ?>">Все</button>
 							</form>
 							<form action="/page/admin.php" method="GET">
-								<button class="admin__btn">Новые заявки</button>
+								<button class="admin__btn <?php if ($sort == 'Новое') {
+																						echo 'admin-active';
+																					} ?>">Новые заявки</button>
 								<input type="hidden" name="sort" value="Новое">
 							</form>
 							<form action="/page/admin.php">
-								<button class="admin__btn">Готовые</button>
+								<button class="admin__btn <?php if ($sort == 'Принятое') {
+																						echo 'admin-active';
+																					} ?>">Готовые</button>
 								<input type="hidden" name="sort" value="Принятое">
 							</form>
 							<form action="/page/admin.php">
-								<button class="admin__btn">Отмененные</button>
+								<button class="admin__btn <?php if ($sort == 'Отмененное') {
+																						echo 'admin-active';
+																					} ?>">Отмененные</button>
 								<input type="hidden" name="sort" value="Отмененное">
 							</form>
 						</div>

@@ -2,6 +2,7 @@ export function catalog() {
   const tabItem = document.querySelectorAll('.catalog__btn-item');
   const tabContent = document.querySelectorAll('.catalog__content');
 
+  // console.log(window.location.href);
   tabItem.forEach(el => {
     el.addEventListener('click', open);
   });
