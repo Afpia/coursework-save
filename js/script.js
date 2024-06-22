@@ -45,7 +45,7 @@ barba.init({
       beforeEnter() {
         preloaderJS();
         profileName();
-        // catalog();
+
       },
       afterEnter() {
         toggle();
@@ -54,7 +54,6 @@ barba.init({
         profileName();
         offClick();
         swiper();
-        // link();
       },
     },
     {
@@ -69,14 +68,12 @@ barba.init({
     {
       namespace: 'profile',
       beforeEnter() {
-        // admin();
         profileJS();
         quit();
       },
       afterEnter() {
         toggle();
         logoInfinity();
-        // admin();
       },
     },
     {
@@ -106,10 +103,8 @@ barba.init({
       namespace: 'policies',
       beforeEnter() {
         profileName();
-        // admin();
       },
       afterEnter() {
-        // policies();
         toggle();
         logoInfinity();
       },
@@ -133,17 +128,6 @@ barba.init({
   ],
 });
 
-function link() {
-  // const all = document.querySelectorAll('.choice__item');
-  const link = window.location.href;
-  window.location.replace(link);
-  // all.forEach(item => {
-  //   item.addEventListener('click', () => {
-  //     // barba.go('./page/catalog.php#content-1');
-  //     window.location.href = './page/catalog.php#content-2';
-  //   });
-  // });
-}
 
 function logoInfinity() {
   gsap.to('.logo', { repeat: -1, rotate: 360, duration: 5, yoyo: true });

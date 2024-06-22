@@ -32,7 +32,7 @@ if (isset($_GET['number'])) {
 
 <body data-barba="wrapper" class="">
 	<div class="app">
-		<div class="fade" data-barba="container" data-barba-namespace="admin" style="overflow: hidden;">
+		<div class="fade" data-barba="container" data-barba-namespace="admin" style="overflow-x: hidden;">
 			<?php require_once __DIR__ . '/../php/components/header.php' ?>
 			<div class="wrapper">
 				<div class="admin">
@@ -129,7 +129,8 @@ if (isset($_GET['number'])) {
 								<button class="admin__btn <?php if ($sort == 'Новое') {
 																						echo 'admin-active';
 																					} ?>">Новые заявки</button>
-								<input type="hidden" name="sort" value="Новое">
+								<input type="hidden" name=
+								"sort" value="Новое">
 							</form>
 							<form action="/page/admin.php">
 								<button class="admin__btn <?php if ($sort == 'Принятое') {
@@ -150,7 +151,6 @@ if (isset($_GET['number'])) {
 		</div>
 	</div>
 	<?php require_once __DIR__ . '/../php/components/footer.php' ?>
-
 </body>
 
 </html>
