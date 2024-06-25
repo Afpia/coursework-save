@@ -14,25 +14,18 @@ export function admin() {
 
   const pencil = document.querySelectorAll('.admin__catalog-pencil');
   const inputAll = document.querySelectorAll('.admin__catalog-input');
-  const confirm = document.querySelectorAll('.admin__catalog-confirm');
 
   for (const iterator of pencil) {
-    confirm.forEach(conf => {
-      inputAll.forEach(item => {
-        if (item.hasAttribute('disabled') && iterator.getAttribute('id') == item.getAttribute('id') && iterator.getAttribute('id') == conf.getAttribute('id')) {
-          iterator.addEventListener('click', () => {
+    inputAll.forEach(item => {
+      if (iterator.getAttribute('id') == item.getAttribute('id')) {
+        iterator.addEventListener('click', () => {
+          if (item.hasAttribute('disabled')) {
             item.removeAttribute('disabled');
-            iterator.style.display = 'none';
-            conf.style.display = 'block';
-          });
-        } else {
-          conf.addEventListener('click', () => {
-            conf.style.display = 'none';
+          } else {
             item.setAttribute('disabled', '');
-            iterator.style.display = 'block';
-          });
-        }
-      });
+          }
+        });
+      }
     });
   }
 }

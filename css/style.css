@@ -1374,7 +1374,7 @@ body.dark .header__switch {
   font-size: 16px;
   cursor: pointer;
   color: var(--background-third);
-  min-height: 50px;
+  min-height: 80px;
   background: none;
 }
 .admin-active {
@@ -1585,6 +1585,7 @@ body.dark .header__switch {
   outline: none;
   text-align: center;
   border: none;
+  width: 100%;
 }
 .admin__catalog-header {
   display: flex;
@@ -1620,7 +1621,7 @@ body.dark .header__switch {
   background: none;
   text-align: center;
   border: none;
-  width: 80px;
+  width: 74px;
 }
 .admin__left {
   display: flex;
@@ -1633,12 +1634,13 @@ body.dark .header__switch {
   outline: none;
   color: var(--color-main);
   background: none;
-  text-align: center;
+  text-align: left;
   font-family: "Poppins", sans-serif;
   border: none;
-  max-width: 150px;
-  max-height: 30px;
+  width: 100%;
+  height: 30px;
   resize: none;
+  overflow-y: auto;
 }
 .admin__catalog-change {
   position: absolute;
@@ -1650,20 +1652,33 @@ body.dark .header__switch {
   justify-content: center;
   background: var(--reverse);
   border-radius: 0 20px;
-  width: 62px;
+  width: 92px;
   height: 35px;
 }
 .admin__catalog-change svg {
   cursor: pointer;
 }
 .admin__catalog-confirm {
-  display: none;
   width: 18px;
   height: 18px;
 }
+.admin__catalog-form {
+  width: 18px;
+  height: 18px;
+  display: flex;
+}
+.admin__catalog-form button {
+  background: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+}
+.admin__catalog-form {
+  background: none;
+}
 
 .navbar__inner-catalog {
-  margin-top: 300px;
+  margin-top: 160px;
 }
 
 .navbar__title {

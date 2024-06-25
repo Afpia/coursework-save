@@ -48,16 +48,17 @@ function FindInsurance(string $name): array|bool
 
 	$stmt = $pdo->prepare(
 		"SELECT 
-    		it.TypeName,
-    		it.Price,
-			it.TypeID
-		FROM 
-			InsuranceCategory ic
-		JOIN 
-    		InsuranceType it ON ic.CategoryID = it.CategoryID
-		WHERE
-			ic.CategoryName = :name
-		"
+      it.TypeID,
+        it.TypeName,
+        it.Price,
+      it.TypeID
+    FROM 
+      InsuranceCategory ic
+    JOIN 
+        InsuranceType it ON ic.CategoryID = it.CategoryID
+    WHERE
+      ic.CategoryName = :name AND it.is_delited = 0   
+    "
 	);
 	$stmt->execute(['name' => $name]);
 
@@ -72,14 +73,15 @@ function FindType(string $name): array|bool
 
 	$stmt = $pdo->prepare(
 		"SELECT 
-    		tp.ParameterName,
-    		tp.ParameterValue
-		FROM 
-			InsuranceType it
-		JOIN 
-    		TypeParameter tp ON tp.TypeID = it.TypeID
-		WHERE
-			it.TypeName = :name"
+      tp.ParameterID,
+        tp.ParameterName,
+        tp.ParameterValue
+    FROM 
+      InsuranceType it
+    JOIN 
+        TypeParameter tp ON tp.TypeID = it.TypeID
+    WHERE
+      it.TypeName = :name"
 	);
 	$stmt->execute(['name' => $name]);
 
