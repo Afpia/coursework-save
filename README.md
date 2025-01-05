@@ -1,2 +1,2 @@
 # Launching the project
-In order to launch this project, you need to download **Open Server** and install **php-8.1**. The project database is MYSQL.
+In order to launch this project, you need to download **Open Server** and install **php-8.1**. The project database is **MYSQL**.
